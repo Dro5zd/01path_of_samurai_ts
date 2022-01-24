@@ -9,4 +9,9 @@
 
 .avatar img {
     width: 200px;
+    border-radius: 50%;
+}
+
+.posts {
+    color: aqua;
 }
