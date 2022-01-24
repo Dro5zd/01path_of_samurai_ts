@@ -9,29 +9,3 @@
     grid-auto-columns: 2fr 10fr;
     grid-gap: 10px;
 }
-.header img{
-    width: 60px;
-}
-
-.content img{
-    width: 1200px;
-}
-
-.header {
-    grid-area: header;
-    background-color: orange;
-}
-
-.nav {
-    background-color: orangered;
-    grid-area: nav;
-}
-
-.content {
-    background-color: brown;
-    grid-area: content;
-}
-
-.avatar img {
-    width: 100px;
-}
