@@ -10,7 +10,9 @@ const App = () => {
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
-            <Profile/>
+            <div className='app-wrapper-content'>
+                <Profile/>
+            </div>
         </div>)
 }
 export default App

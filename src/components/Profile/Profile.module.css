@@ -2,11 +2,6 @@
     width: 1000px;
 }
 
-.content {
-    background-color: brown;
-    grid-area: content;
-}
-
 .avatar img {
     width: 200px;
     border-radius: 50%;
