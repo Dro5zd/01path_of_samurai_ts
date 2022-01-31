@@ -1,17 +1,21 @@
 .nav {
-    padding: 20px;
+    padding: 15px 20px;
     grid-area: nav;
-    background-color: orangered;
+    background-color: whitesmoke;
+    z-index: 100;
+    box-shadow: 0 5px 8px -9px rgba(0,0,0,0.75);
 }
 
 .item {
-    color: white;
-    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-size: 20px;
     text-decoration: none;
 }
 
 .active {
-    font-size: 30px;
+    font-size: 20px;
     text-decoration: none;
     color: gold;
 }

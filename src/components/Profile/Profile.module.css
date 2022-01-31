@@ -1,8 +1,12 @@
 .content img {
     width: 1000px;
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: 100% 50%;
 }
 
-.avatar img {
-    width: 200px;
+.avatar img{
+    width: 150px;
     border-radius: 50%;
 }
