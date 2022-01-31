@@ -12,7 +12,7 @@ type NavbarRowPropsType = {
 
 function NavbarRow(props: NavbarRowPropsType) {
     return (
-        <div>
+        <div className={s.section}>
             <div className={s.navbar_item}>
                 {props.icon}
                 <h4><NavLink to={props.url}

@@ -27,11 +27,6 @@
     cursor: pointer;
 }
 
-.navbar_item:hover {
-    background-color: #DADDE1;
-    border-radius: 10px;
-}
-
 .navbar_item > h4 {
     margin-left: 10px;
 }
@@ -41,7 +36,12 @@
     color: gray;
 }
 
-.navbar_logo:hover {
+.section:hover .navbar_item {
+    background-color: #DADDE1;
+    border-radius: 10px;
+}
+
+.section:hover .navbar_logo {
     margin-left: 15px;
     color: cornflowerblue;
 }
