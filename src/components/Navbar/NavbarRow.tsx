@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from "./Navbar.module.css";
+import {NavLink} from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-NavbarRow.propTypes = {
-    
+type NavbarRowPropsType = {
+    title: string
+    url: string
+    icon: any
 };
 
-function NavbarRow(props) {
+function NavbarRow(props: NavbarRowPropsType) {
     return (
-        <div></div>
+        <div>
+            <div className={s.navbar_item}>
+                {props.icon}
+                <h4><NavLink to={props.url}
+                             className={navData => navData.isActive ? s.active : s.item}>{props.title}</NavLink>
+                </h4>
+
+            </div>
+        </div>
     );
 }
 

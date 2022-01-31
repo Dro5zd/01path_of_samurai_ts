@@ -1,21 +1,47 @@
 .nav {
     padding: 15px 20px;
     grid-area: nav;
-    background-color: whitesmoke;
+    background-color: white;
     z-index: 100;
-    box-shadow: 0 5px 8px -9px rgba(0,0,0,0.75);
+    box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
 }
 
 .item {
-    display: flex;
-    justify-content: space-between;
     color: black;
     font-size: 20px;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .active {
     font-size: 20px;
     text-decoration: none;
-    color: gold;
+    color: black;
+}
+
+.navbar_item {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    /*padding: 5px;*/
+    cursor: pointer;
+}
+
+.navbar_item:hover {
+    background-color: #DADDE1;
+    border-radius: 10px;
+}
+
+.navbar_item > h4 {
+    margin-left: 10px;
+}
+
+.navbar_logo {
+    margin-left: 15px;
+    color: gray;
+}
+
+.navbar_logo:hover {
+    margin-left: 15px;
+    color: cornflowerblue;
 }
