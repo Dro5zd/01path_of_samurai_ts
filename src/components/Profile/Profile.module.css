@@ -1,6 +1,6 @@
 
 s.content {
-
+    position: relative;
 }
 
 
@@ -12,7 +12,12 @@ s.content {
     object-position: 100% 50%;
 }
 
-.avatar img{
+.avatar img {
+    position: relative;
     width: 150px;
     border-radius: 50%;
+    border: 3px solid white;
+    top: -75px;
+    left: 425px;
+
 }
