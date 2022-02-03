@@ -2,8 +2,16 @@ import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
+
+let postMessage = [
+    {message: 'Hi. How r u?', likeCount: 12},
+    {message: 'Why u so serious?', likeCount: 45}
+
+]
+
 const MyPosts = () => {
 
+    let postMessageItem = postMessage.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
 
     return (
         <div className={s.posts}>
@@ -12,8 +20,7 @@ const MyPosts = () => {
                 <input/>
                 <button> Add post</button>
             </div>
-            <Post message='Hi. How r u?' count={2}/>
-            <Post message="I'm fine! Thx." count={15}/>
+            {postMessageItem}
         </div>
     );
 }
