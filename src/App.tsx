@@ -10,7 +10,27 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 
 
-const App = () => {
+type AppDialogPropsType = {
+    name:string
+    id:number
+}
+
+type AppMessagePropsType = {
+    title:string
+}
+
+type AppPostMessagePropsType = {
+    message:string
+    likeCount:number
+}
+
+type AppProps ={
+    dialog: Array<AppDialogPropsType>
+    message: Array<AppMessagePropsType>
+    postMessage: Array<AppPostMessagePropsType>
+}
+
+const App = (props:AppProps) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -18,9 +38,8 @@ const App = () => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/" element={<Profile/>}/>
-                        <Route path="/profile/*" element={<Profile/>}/>
-                        <Route path="/dialogs/*" element= {<Dialogs/>}/>
+                        <Route path="/profile/*" element={<Profile postMessage={props.postMessage}/>}/>
+                        <Route path="/dialogs/*" element= {<Dialogs dialogItem={props.dialog} messageItem={props.message}/>}/>
                         <Route path="/news/*" element= {<News/>}/>
                         <Route path="/music/*" element= {<Music/>}/>
                         <Route path="/settings/*" element= {<Settings/>}/>

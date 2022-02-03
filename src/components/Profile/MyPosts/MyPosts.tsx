@@ -3,15 +3,18 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
-let postMessage = [
-    {message: 'Hi. How r u?', likeCount: 12},
-    {message: 'Why u so serious?', likeCount: 45}
+type MyPostsPropsType = {
+    message: string,
+    likeCount: number
+}
 
-]
+type MyPostsProps = {
+    text: Array<MyPostsPropsType>
+}
 
-const MyPosts = () => {
+const MyPosts = (props:MyPostsProps) => {
 
-    let postMessageItem = postMessage.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
+    let postMessageItem = props.text.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
 
     return (
         <div className={s.posts}>
