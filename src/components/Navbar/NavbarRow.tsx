@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 type NavbarRowPropsType = {
     title: string
@@ -15,13 +13,15 @@ function NavbarRow(props: NavbarRowPropsType) {
         <div className={s.section}>
             <div className={s.navbar_item}>
                 {props.icon}
-                <h4><NavLink to={props.url}
-                             className={navData => navData.isActive ? s.active : s.item}>{props.title}</NavLink>
+                <h4>
+                    <NavLink to={props.url} className={navData => navData.isActive ? s.active : s.item}>{props.title}</NavLink>
                 </h4>
 
             </div>
         </div>
     );
 }
+
+
 
 export default NavbarRow;
