@@ -8,9 +8,16 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
-import {state} from "./redux/state";
+import {messagesType, dialogsType, state, postMessageType} from "./redux/state";
 
-const App = (props: any) => {
+type AppPropsType = {
+    dialog: dialogsType[],
+    message: messagesType[],
+    postMessage: postMessageType[]
+}
+
+const App = (props: AppPropsType) => {
+
     return (
         <BrowserRouter>
             <div className='app-wrapper'>

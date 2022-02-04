@@ -5,12 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {state} from "./redux/state";
 
-
-
-
 ReactDOM.render(
   <React.StrictMode>
-    <App dialog={state.dialogsPage.dialogs} message={state.dialogsPage.messages} postMessage={state.profilePage}/>
+    <App dialog={state.dialogsPage.dialogs} message={state.dialogsPage.messages} postMessage={state.profilePage.postMessage}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
