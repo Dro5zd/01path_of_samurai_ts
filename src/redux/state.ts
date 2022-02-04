@@ -1,27 +1,61 @@
+type postMessageType = {
+    id: number
+    message: string
+    likeCount: number
+}
 
-export let state = {
+type profilePageType = {
+    postMessage: Array<postMessageType>
+}
+
+type dialogsType = {
+    id: number
+    name: string
+
+}
+
+type messagesType = {
+    id: number
+    title: string
+
+}
+
+type dialogsPageType = {
+    dialogs: Array<dialogsType>
+    messages: Array<messagesType>
+}
+
+
+type RootStateType = {
+    profilePage: profilePageType
+    dialogsPage: dialogsPageType
+
+}
+
+
+export let state: RootStateType = {
 
     profilePage: {
         postMessage: [
-            {message: 'Hi. How r u?', likeCount: 12},
-            {message: 'Why u so serious?', likeCount: 45}
+            {id: 1, message: 'Hi. How r u?', likeCount: 12},
+            {id: 2, message: 'Why u so serious?', likeCount: 45}
         ]
     },
 
     dialogsPage: {
         dialogs: [
-            {name: "Homer", id: 1},
-            {name: "Lisa", id: 2},
-            {name: "Bart", id: 3},
-            {name: "Marge", id: 4},
-            {name: "Krusty", id: 5},
+            {id: 1, name: "Homer"},
+            {id: 2, name: "Lisa"},
+            {id: 3, name: "Bart"},
+            {id: 4, name: "Marge"},
+            {id: 5, name: "Krusty"},
         ],
 
         messages: [
-            {title: 'Hello'},
-            {title: 'Hi'},
-            {title: 'How r u?'},
-            {title: 'I\'m fine!!!'},
+            {id: 1, title: 'Hello'},
+            {id: 2, title: 'Hi'},
+            {id: 3, title: 'How r u?'},
+            {id: 4, title: 'I\'m fine!!!'},
         ]
 
 
