@@ -1,4 +1,4 @@
-import s from "../Profile.module.css";
+import s from "../ProfileInfo/ProfileInfo.module.css";
 import React from "react";
 
 
@@ -10,8 +10,9 @@ export const ProfileInfo = () => {
                 alt={'Mountain'}/></div>
             <div className={s.avatar}>
                 <img src='https://i.imgur.com/68RKwAl.png' alt={'ava'}/>
-
+                <h2 className={s.profileName}>Homer Simpson</h2>
             </div>
+
         </div>
     )
 }

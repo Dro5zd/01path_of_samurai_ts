@@ -1,0 +1,28 @@
+s.content {
+    position: relative;
+}
+
+
+.picture img {
+    width: 1000px;
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: 100% 50%;
+}
+
+.avatar img {
+    position: relative;
+    width: 150px;
+    border-radius: 50%;
+    border: 3px solid white;
+    top: -75px;
+    left: 425px;
+
+}
+
+.profileName {
+    position: relative;
+    text-align: center;
+    top: -85px;
+}
