@@ -4,7 +4,7 @@ export type postMessageType = {
     likeCount: number
 }
 
- export type profilePageType = {
+export type profilePageType = {
     postMessage: Array<postMessageType>
 }
 

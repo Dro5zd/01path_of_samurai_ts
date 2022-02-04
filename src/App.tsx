@@ -9,6 +9,7 @@ import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import {messagesType, dialogsType, state, postMessageType} from "./redux/state";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 type AppPropsType = {
     dialog: dialogsType[],
@@ -32,6 +33,7 @@ const App = (props: AppPropsType) => {
                         <Route path="/settings/*" element= {<Settings/>}/>
                     </Routes>
                 </div>
+                <Sidebar/>
             </div>
         </BrowserRouter>)
 }
