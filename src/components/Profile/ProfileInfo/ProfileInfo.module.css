@@ -1,35 +1,33 @@
-s.content {
-    display: flex;
-    align-items: center;
-    position: relative;
-}
+
 
 
 .picture img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 1050px;
-    height: 350px;
-    border-radius: 5px;
+    margin: auto;
+    width: 80%;
+    height: 200px;
+    border-radius: 0 0 5px 5px;
     object-fit: cover;
-    object-position: 100% 50%;
+    object-position: 100% 65%;
+}
+
+.avatar {
+    position: relative;
+    margin-top: -150px
 }
 
 .avatar img {
-    position: relative;
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 168px;
     border-radius: 50%;
     border: 5px solid white;
-    top: -150px
+
 }
 
 .profileName {
+    margin: 5px;
     font-size: 32px;
-    position: relative;
     text-align: center;
-    top: -170px;
 }

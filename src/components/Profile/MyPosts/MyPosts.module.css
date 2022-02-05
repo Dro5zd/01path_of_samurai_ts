@@ -1,5 +1,10 @@
 
 
 .posts {
+    grid-area: post;
+    padding: 10px 2px;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
     color: black;
 }

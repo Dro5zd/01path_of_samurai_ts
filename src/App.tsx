@@ -8,13 +8,12 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
-import {messagesType, dialogsType, state, postMessageType} from "./redux/state";
+import {profilePageType, dialogsPageType} from "./redux/state";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 type AppPropsType = {
-    dialog: dialogsType[],
-    message: messagesType[],
-    postMessage: postMessageType[]
+    dialogsPage: dialogsPageType,
+    profilePage: profilePageType,
 }
 
 const App = (props: AppPropsType) => {
@@ -26,11 +25,12 @@ const App = (props: AppPropsType) => {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/profile/*" element={<Profile postMessage={state.profilePage.postMessage}/>}/>
-                        <Route path="/dialogs/*" element= {<Dialogs dialogItem={state.dialogsPage.dialogs} messageItem={state.dialogsPage.messages}/>}/>
-                        <Route path="/news/*" element= {<News/>}/>
-                        <Route path="/music/*" element= {<Music/>}/>
-                        <Route path="/settings/*" element= {<Settings/>}/>
+                        <Route path="/profile/*" element={<Profile postMessage={props.profilePage.postMessage}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs dialogItem={props.dialogsPage.dialogs}
+                                                                   messageItem={props.dialogsPage.messages}/>}/>
+                        <Route path="/news/*" element={<News/>}/>
+                        <Route path="/music/*" element={<Music/>}/>
+                        <Route path="/settings/*" element={<Settings/>}/>
                     </Routes>
                 </div>
                 <Sidebar/>

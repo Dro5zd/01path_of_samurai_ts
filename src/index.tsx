@@ -7,7 +7,7 @@ import {state} from "./redux/state";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App dialog={state.dialogsPage.dialogs} message={state.dialogsPage.messages} postMessage={state.profilePage.postMessage}/>
+    <App dialogsPage={state.dialogsPage} profilePage={state.profilePage}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,7 +1,8 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import {postMessageType, state} from "../../redux/state";
+import {postMessageType} from "../../redux/state";
+import  s from "./Profile.module.css"
 
 type ProfilePropsType = {
     postMessage: postMessageType[]
@@ -9,9 +10,9 @@ type ProfilePropsType = {
 
 const Profile = (props: ProfilePropsType) => {
     return (
-        <div>
+        <div className={s.pContent}>
             <ProfileInfo/>
-            <MyPosts text={state.profilePage.postMessage}/>
+            <MyPosts postMessage={props.postMessage}/>
         </div>
     );
 }

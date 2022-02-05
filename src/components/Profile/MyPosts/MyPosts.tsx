@@ -1,20 +1,16 @@
 import React from "react";
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
+import {postMessageType} from "../../../redux/state";
 
-
-type MyPostsPropsType = {
-    message: string,
-    likeCount: number
-}
 
 type MyPostsProps = {
-    text: Array<MyPostsPropsType>
+    postMessage: postMessageType[]
 }
 
 const MyPosts = (props:MyPostsProps) => {
 
-    let postMessageItem = props.text.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
+    let postMessageItem = props.postMessage.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
 
     return (
         <div className={s.posts}>
