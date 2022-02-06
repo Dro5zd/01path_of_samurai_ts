@@ -26,14 +26,15 @@ const App = (props: AppPropsType) => {
                 <div className='app-wrapper-content'>
                     <Routes>
                         <Route path="/profile/*" element={<Profile postMessage={props.profilePage.postMessage}/>}/>
-                        <Route path="/dialogs/*" element={<Dialogs dialogItem={props.dialogsPage.dialogs}
-                                                                   messageItem={props.dialogsPage.messages}/>}/>
+                        <Route path="/dialogs/*" element={<Dialogs dialogItem={props.dialogsPage.dialogItem}
+                                                                   messageItem={props.dialogsPage.messageItem}/>}/>
+                        <Route path="/news/*" element={<News/>}/>
                         <Route path="/news/*" element={<News/>}/>
                         <Route path="/music/*" element={<Music/>}/>
                         <Route path="/settings/*" element={<Settings/>}/>
                     </Routes>
                 </div>
-                <Sidebar/>
+                <Sidebar contactItem={props.dialogsPage.dialogItem}/>
             </div>
         </BrowserRouter>)
 }

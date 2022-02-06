@@ -16,8 +16,6 @@ function NavbarRow(props: NavbarRowPropsType) {
                     {props.icon}
                     <h4 className={s.navbar_title}>{props.title}</h4>
                 </NavLink>
-
-
             </div>
         </div>
     );

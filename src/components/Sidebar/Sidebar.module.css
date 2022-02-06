@@ -5,3 +5,42 @@
     z-index: 100;
     box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
 }
+
+.contactLogo img {
+    display: block;
+    width: 40px;
+
+    border-radius: 50%;
+    margin-left: 10px;
+    color: cornflowerblue;
+}
+
+.side h4 {
+    display: flex;
+    align-items: center;
+
+    color: gray;
+}
+
+.contactName{
+    display: block;
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contactItem{
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.contactItem:hover {
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px;
+}
+
+/*.contactItem:hover .navbar_logo {*/
+/*    margin-left: 15px;*/
+/*    !*color: mediumpurple;*!*/
+/*}*/

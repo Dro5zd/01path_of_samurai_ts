@@ -1,11 +1,8 @@
 import React from 'react';
 import s from './Messages.module.css'
+import {messageItemType} from "../../../redux/state";
 
-type MessagesPropsType = {
-    title:string
-}
-
-function Messages(props:MessagesPropsType) {
+function Messages(props:messageItemType) {
     return (
         <div className={s.item}>
             {props.title}

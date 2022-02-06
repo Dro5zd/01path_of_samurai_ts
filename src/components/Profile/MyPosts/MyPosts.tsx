@@ -10,7 +10,7 @@ type MyPostsProps = {
 
 const MyPosts = (props:MyPostsProps) => {
 
-    let postMessageItem = props.postMessage.map((m => <Post message={m.message} likeCount={m.likeCount}/>))
+    let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
 
     return (
         <div className={s.posts}>

@@ -8,27 +8,26 @@ export type profilePageType = {
     postMessage: Array<postMessageType>
 }
 
-export type dialogsType = {
+export type dialogItemType = {
     id: number
     name: string
-
+    avatar: string
 }
 
-export type messagesType = {
+export type messageItemType = {
     id: number
     title: string
 }
 
 export type dialogsPageType = {
-    dialogs: Array<dialogsType>
-    messages: Array<messagesType>
+    dialogItem: Array<dialogItemType>
+    messageItem: Array<messageItemType>
 }
 
 
 export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
-
 }
 
 
@@ -42,24 +41,21 @@ export let state: RootStateType = {
     },
 
     dialogsPage: {
-        dialogs: [
-            {id: 1, name: "Homer"},
-            {id: 2, name: "Lisa"},
-            {id: 3, name: "Bart"},
-            {id: 4, name: "Marge"},
-            {id: 5, name: "Krusty"},
+        dialogItem: [
+            {id: 1, name: "Homer Simpson", avatar: 'https://w7.pngwing.com/pngs/825/720/png-transparent-grampa-simpson-homer-simpson-bart-simpson-marge-simpson-herbert-powell-bart-simpson-vertebrate-fictional-character-cartoon-thumbnail.png'},
+            // {id: 2, name: "Lisa Simpson", avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIPJqgtlKJCSQYwKPyn_duMl-sRzoJdt9d2ec7tqHkXLx_5DqobZk2RCpGBclJEbNMov8&usqp=CAU'},
+            // {id: 3, name: "Bart Simpson", avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTal9zpW8P7puFa4bi8cFTU26yK6KgXx1rTA_6BRyY05-j74hs4K1CUc7v70w4RX6tHKns&usqp=CAU"},
+            // {id: 4, name: "Marge Simpson", avatar: "https://www.disneyplusinformer.com/wp-content/uploads/2021/09/The-Simpsons-Profile-Icons-7.png"},
+            // {id: 5, name: "Krusty", avatar: "https://whatsondisneyplus.com/wp-content/uploads/2021/09/krusty.png"},
         ],
 
-        messages: [
+        messageItem: [
             {id: 1, title: 'Hello'},
             {id: 2, title: 'Hi'},
             {id: 3, title: 'How r u?'},
             {id: 4, title: 'I\'m fine!!!'},
         ]
-
-
     }
-
 
 }
 
