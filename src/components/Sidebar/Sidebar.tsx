@@ -9,24 +9,14 @@ type SidebarPropsType = {
 
 const Sidebar = (props: SidebarPropsType) => {
 
-    let contactsElement = props.contactItem.map(c => <img src={c.avatar} alt="ava1"/>)
-    let contactsName = props.contactItem.map(c => <span className={s.contactName}>{c.name}</span>)
     return (
         <div className={s.side}>
-
             <h4>Контакты</h4>
-            <div className={s.contactItem}>
-                <div className={s.contactLogo}>
-                    {contactsElement}
-                </div>
-                <div className={s.contactName}>
-                    {contactsName}
-                </div>
-            </div>
-
-
+            {props.contactItem.map(i => <div className={s.contactItem}><img className={s.contactLogo} src={i.avatar} alt="ava1"/><span
+                className={s.contactName}>{i.name}</span></div>)}
         </div>
     );
 };
 
-export default Sidebar;
+
+export default Sidebar;    

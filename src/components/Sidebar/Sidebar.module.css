@@ -6,10 +6,9 @@
     box-shadow: 0 5px 8px -9px rgba(0, 0, 0, 0.75);
 }
 
-.contactLogo img {
+.contactLogo {
     display: block;
-    width: 40px;
-
+    height: 40px;
     border-radius: 50%;
     margin-left: 10px;
     color: cornflowerblue;
