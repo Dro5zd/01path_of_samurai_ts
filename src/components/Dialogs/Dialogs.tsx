@@ -11,8 +11,9 @@ type dialogsPagePropsType = {
 
 
 const Dialogs = (props: dialogsPagePropsType) => {
-    // let filteredDialogs = props.dialogItem.slice(0, 2);
-    let dialogsElement = props.dialogItem.map(d => <DialogItem  key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
+    let family = props.dialogItem.filter(i => (i.id <= 4))
+
+    let dialogsElement = family.map(d => <DialogItem  key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
     let messagesItem = props.messageItem.map(d => <Messages key={d.id} title={d.title}
     id={d.id}/>)
     return (
