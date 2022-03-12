@@ -1,4 +1,4 @@
-import React, { KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
 import {postMessageType, state} from '../../../redux/state';
@@ -9,17 +9,14 @@ type MyPostsProps = {
     postMessage: postMessageType[]
     addPost: (postMessage: string) => void
     updateNewPostText: (newPost: string) => void
+    newPostText: string
 }
 
 const MyPosts = (props: MyPostsProps) => {
     let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
 
-    let postMessageRef = React.createRef<HTMLTextAreaElement>()
-
     const onClickAddPostButtonHandler = () => {
-        if (postMessageRef.current) {
-            props.addPost(postMessageRef.current.value)
-        }
+        props.addPost(props.newPostText)
         rerenderEntireTree(state)
     }
 
@@ -29,10 +26,8 @@ const MyPosts = (props: MyPostsProps) => {
         }
     }
 
-    const onPostChange = () => {
-        if (postMessageRef.current) {
-            props.updateNewPostText(postMessageRef.current.value)
-        }
+    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+            props.updateNewPostText(e.currentTarget.value)
     }
 
     return (
@@ -42,7 +37,7 @@ const MyPosts = (props: MyPostsProps) => {
                 <textarea
                     rows={1}
                     style={{resize: 'none'}}
-                    ref={postMessageRef}
+                    value={props.newPostText}
                     onKeyPress={onEnterAddPostButtonHandler}
                     onChange={onPostChange}/>
                 <button onClick={onClickAddPostButtonHandler}> Add post</button>

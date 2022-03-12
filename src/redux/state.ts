@@ -40,7 +40,7 @@ export let state: RootStateType = {
             {id: 1, message: 'Hi. How r u?', likeCount: 12},
             {id: 2, message: 'Why u so serious?', likeCount: 45}
         ],
-        newPostText: 'IT'
+        newPostText: ''
     },
 
     dialogsPage: {

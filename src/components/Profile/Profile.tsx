@@ -8,13 +8,14 @@ type ProfilePropsType = {
     postMessage: postMessageType[]
     addPost: (postMessage: string)=>void
     updateNewPostText: (newPost: string) => void
+    newPostText: string
 }
 
 const Profile = (props: ProfilePropsType) => {
     return (
         <div className={s.pContent}>
             <ProfileInfo/>
-            <MyPosts postMessage={props.postMessage} addPost={props.addPost}  updateNewPostText={props.updateNewPostText}/>
+            <MyPosts postMessage={props.postMessage} addPost={props.addPost}  updateNewPostText={props.updateNewPostText} newPostText={props.newPostText}/>
         </div>
     );
 }
