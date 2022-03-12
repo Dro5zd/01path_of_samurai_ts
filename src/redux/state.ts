@@ -105,5 +105,14 @@ let store = {
 
 }
 
+export const addPost = (postMessage: string) => {
+    const newPost: postMessageType = {
+        id: new Date().getTime(),
+        message: postMessage,
+        likeCount: 0
+    };
+    state.profilePage.postMessage.push(newPost);
+}
+
 
 
