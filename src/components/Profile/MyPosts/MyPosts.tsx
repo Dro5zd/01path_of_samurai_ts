@@ -32,16 +32,11 @@ const MyPosts = (props: MyPostsProps) => {
                 <TextField id="outlined-basic" label="Outlined" variant="outlined"
                            value={props.newPostText}
                            onChange={onPostChange}/>
-                {/*<textarea*/}
-                {/*    rows={1}*/}
-                {/*    style={{resize: 'none'}}*/}
-                {/*    value={props.newPostText}*/}
-                {/*    onKeyPress={onEnterAddPostButtonHandler}*/}
-                {/*    onChange={onPostChange}/>*/}
+
                 <Button onClick={onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon />}>
                     Send
                 </Button>
-                {/*<button onClick={onClickAddPostButtonHandler}> Add post</button>*/}
+
             </div>
             {postMessageItem}
         </div>
