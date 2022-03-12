@@ -30,8 +30,8 @@ export type RootStateType = {
     dialogsPage: dialogsPageType
 }
 
-let store = {
-    state: RootStateType = {
+export let state: RootStateType = {
+
         profilePage: {
             postMessage: [
                 {id: 1, message: 'Hi. How r u?', likeCount: 12},
@@ -100,8 +100,6 @@ let store = {
                 {id: 4, title: 'I\'m fine!!!'},
             ]
         }
-    }
-
 
 }
 
