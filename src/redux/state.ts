@@ -30,6 +30,7 @@ export type RootStateType = {
     dialogsPage: dialogsPageType
 }
 
+let
 
 export let state: RootStateType = {
 
