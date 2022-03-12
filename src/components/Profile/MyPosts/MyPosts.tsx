@@ -1,8 +1,10 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
 import {postMessageType, state} from '../../../redux/state';
 import {rerenderEntireTree} from '../../../index';
+import {Button, TextField} from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 
 type MyPostsProps = {
@@ -20,27 +22,26 @@ const MyPosts = (props: MyPostsProps) => {
         rerenderEntireTree(state)
     }
 
-    const onEnterAddPostButtonHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (event.key === 'Enter') {
-            onClickAddPostButtonHandler()
-        }
-    }
-
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
             props.updateNewPostText(e.currentTarget.value)
     }
 
     return (
         <div className={s.posts}>
-            My Posts
             <div>
-                <textarea
-                    rows={1}
-                    style={{resize: 'none'}}
-                    value={props.newPostText}
-                    onKeyPress={onEnterAddPostButtonHandler}
-                    onChange={onPostChange}/>
-                <button onClick={onClickAddPostButtonHandler}> Add post</button>
+                <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                           value={props.newPostText}
+                           onChange={onPostChange}/>
+                {/*<textarea*/}
+                {/*    rows={1}*/}
+                {/*    style={{resize: 'none'}}*/}
+                {/*    value={props.newPostText}*/}
+                {/*    onKeyPress={onEnterAddPostButtonHandler}*/}
+                {/*    onChange={onPostChange}/>*/}
+                <Button onClick={onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon />}>
+                    Send
+                </Button>
+                {/*<button onClick={onClickAddPostButtonHandler}> Add post</button>*/}
             </div>
             {postMessageItem}
         </div>
