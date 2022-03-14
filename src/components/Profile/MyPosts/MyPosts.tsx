@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
-import {postMessageType, state} from '../../../redux/state';
+import {postMessageType} from '../../../redux/state';
 import {rerenderEntireTree} from '../../../index';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -19,7 +19,7 @@ const MyPosts = (props: MyPostsProps) => {
 
     const onClickAddPostButtonHandler = () => {
         props.addPost(props.newPostText)
-        rerenderEntireTree(state)
+        //rerenderEntireTree()
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

@@ -33,14 +33,15 @@ export type RootStateType = {
 }
 
 export type StoreType = {
-    state: RootStateType
+    _state: RootStateType
     addPost: ()=>void
     updateNewPostText: (newText: string)=>void
-    rerenderEntireTree: (newText: string)=>void
-    subscribe: (observer: ()=> void)=>void
+    rerenderEntireTree: (state: RootStateType)=>void
+    subscribe: (observer: (state: RootStateType)=> void)=>void
+    getState: ()=> RootStateType
 }
 export let store: StoreType = {
-    state: {
+    _state: {
 
         profilePage: {
             postMessage: [
@@ -113,27 +114,32 @@ export let store: StoreType = {
         }
 
     },
+    rerenderEntireTree (state: RootStateType) {
+        console.log('GoGoGo')
+    },
     addPost () {
         const newPost: postMessageType = {
             id: new Date().getTime(),
-            message: state.profilePage.newPostText,
+            message: this._state.profilePage.newPostText,
             likeCount: 0
         };
-        state.profilePage.postMessage.push(newPost);
-        state.profilePage.newPostText = ''
-        rerenderEntireTree()
+        this._state.profilePage.postMessage.push(newPost);
+        this._state.profilePage.newPostText = ''
+        this.rerenderEntireTree(this._state)
     },
     updateNewPostText (newText: string) {
-        state.profilePage.newPostText = newText
-        rerenderEntireTree()
+        this._state.profilePage.newPostText = newText
+        this.rerenderEntireTree(this._state)
     },
 
-    rerenderEntireTree () {
-        console.log('GoGoGo')
+
+    subscribe (observer) {
+        this.rerenderEntireTree = observer
     },
-    subscribe (observer: ()=> void) {
-        rerenderEntireTree = observer
-    }
+
+    getState () {
+        return this._state
+}
 
 
 }
