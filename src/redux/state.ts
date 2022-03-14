@@ -32,6 +32,10 @@ export type RootStateType = {
     dialogsPage: dialogsPageType
 }
 
+let store = {
+
+}
+
 export let state: RootStateType = {
 
     profilePage: {
