@@ -19,7 +19,7 @@ const MyPosts = (props: MyPostsProps) => {
 
     const onClickAddPostButtonHandler = () => {
         props.addPost(props.newPostText)
-        rerenderEntireTree()
+        //rerenderEntireTree()
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
