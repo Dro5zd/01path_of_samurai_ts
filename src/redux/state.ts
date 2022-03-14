@@ -1,4 +1,3 @@
-import {rerenderEntireTree} from '../index';
 
 export type postMessageType = {
     id: number
@@ -115,12 +114,20 @@ export const addPost = () => {
     };
     state.profilePage.postMessage.push(newPost);
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+    rerenderEntireTree()
+}
+
+let rerenderEntireTree = () =>{
+    console.log('GoGoGo')
+}
+
+export const subscribe = (observer: ()=> void) => {
+    rerenderEntireTree = observer
 }
 
 
