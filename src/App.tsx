@@ -29,7 +29,8 @@ const App = (props: AppPropsType) => {
                                              dispatch={props.dispatch}
                                              newPostText={props.state.profilePage.newPostText}/>}/>
                     <Route path="/dialogs/*" element={<Dialogs dialogItem={props.state.dialogsPage.dialogItem}
-                                                               messageItem={props.state.dialogsPage.messageItem}/>}/>
+                                                               messageItem={props.state.dialogsPage.messageItem}
+                                                               dispatch={props.dispatch}/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
