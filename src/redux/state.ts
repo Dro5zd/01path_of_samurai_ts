@@ -32,11 +32,12 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    subscribe: (observer: (state: RootStateType) => void) => void
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
     _rerenderEntireTree: (state: RootStateType) => void
+
+    subscribe: (observer: (state: RootStateType) => void) => void
     getState: () => RootStateType
+
+    dispatch: (action: any)=>void
 }
 
 export let store: StoreType = {
@@ -134,7 +135,7 @@ export let store: StoreType = {
             this._state.profilePage.postMessage.push(newPost);
             this._state.profilePage.newPostText = ''
             this._rerenderEntireTree(this._state)
-        }else if(action.type === 'UPDATE-NEW-POST'){
+        } else if (action.type === 'UPDATE-NEW-POST') {
             this._state.profilePage.newPostText = action.newText
             this._rerenderEntireTree(this._state)
         }
