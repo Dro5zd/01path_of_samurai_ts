@@ -42,7 +42,6 @@ export type StoreType = {
 
 type AddPostActionType = {
     type: 'ADD-POST'
-    message: string
 }
 
 type UpdateNewPostActionType = {

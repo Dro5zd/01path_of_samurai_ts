@@ -16,11 +16,11 @@ const MyPosts = (props: MyPostsProps) => {
     let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
 
     const onClickAddPostButtonHandler = () => {
-        props.dispatch({type: 'ADD-POST', message: props.newPostText})
+        props.dispatch({type: 'ADD-POST'})
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type: 'UPDATE-NEW-POST', newText:e.currentTarget.value })
+        props.dispatch({type: 'UPDATE-NEW-POST', newText: e.currentTarget.value})
     }
 
     return (
