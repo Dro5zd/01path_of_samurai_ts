@@ -32,11 +32,11 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    subscribe: (observer: (state: RootStateType)=> void)=>void
-    addPost: ()=>void
-    updateNewPostText: (newText: string)=>void
-    _rerenderEntireTree: (state: RootStateType)=>void
-    getState: ()=> RootStateType
+    subscribe: (observer: (state: RootStateType) => void) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+    _rerenderEntireTree: (state: RootStateType) => void
+    getState: () => RootStateType
 }
 
 export let store: StoreType = {
@@ -113,33 +113,32 @@ export let store: StoreType = {
         }
 
     },
-    _rerenderEntireTree () {
+    _rerenderEntireTree() {
         console.log('GoGoGo')
     },
 
-    addPost () {
-        const newPost: postMessageType = {
-            id: new Date().getTime(),
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.postMessage.push(newPost);
-        this._state.profilePage.newPostText = ''
-        this._rerenderEntireTree(this._state)
-    },
-    updateNewPostText (newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._rerenderEntireTree(this._state)
-    },
-
-    subscribe (observer) {
+    subscribe(observer) {
         this._rerenderEntireTree = observer
     },
-    getState () {
+    getState() {
         return this._state
-}
+    },
 
-
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            const newPost: postMessageType = {
+                id: new Date().getTime(),
+                message: this._state.profilePage.newPostText,
+                likeCount: 0
+            };
+            this._state.profilePage.postMessage.push(newPost);
+            this._state.profilePage.newPostText = ''
+            this._rerenderEntireTree(this._state)
+        }else if(action.type === 'UPDATE-NEW-POST'){
+            this._state.profilePage.newPostText = action.newText
+            this._rerenderEntireTree(this._state)
+        }
+    }
 }
 
 
