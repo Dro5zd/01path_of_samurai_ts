@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
-import {ActionsTypes, addPostAC, postMessageType} from '../../../redux/state';
+import {ActionsTypes, addPostAC, postMessageType, updateNewPostAC} from '../../../redux/state';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -20,7 +20,7 @@ const MyPosts = (props: MyPostsProps) => {
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type: 'UPDATE-NEW-POST', newText: e.currentTarget.value})
+        props.dispatch(updateNewPostAC(e.currentTarget.value))
     }
 
     return (
