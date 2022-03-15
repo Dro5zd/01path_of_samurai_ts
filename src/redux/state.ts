@@ -1,4 +1,3 @@
-
 export type postMessageType = {
     id: number
     message: string
@@ -26,7 +25,6 @@ export type dialogsPageType = {
     messageItem: Array<messageItemType>
 }
 
-
 export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
@@ -34,12 +32,13 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
-    addPost: ()=>void
-    updateNewPostText: (newText: string)=>void
-    rerenderEntireTree: (state: RootStateType)=>void
-    subscribe: (observer: (state: RootStateType)=> void)=>void
-    getState: ()=> RootStateType
+    _subscribe: (observer: (state: RootStateType) => void) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+    rerenderEntireTree: (state: RootStateType) => void
+    getState: () => RootStateType
 }
+
 export let store: StoreType = {
     _state: {
 
@@ -114,10 +113,13 @@ export let store: StoreType = {
         }
 
     },
-    rerenderEntireTree (state: RootStateType) {
+    _subscribe(observer) {
+        this.rerenderEntireTree = observer
+    },
+    rerenderEntireTree() {
         console.log('GoGoGo')
     },
-    addPost () {
+    addPost() {
         const newPost: postMessageType = {
             id: new Date().getTime(),
             message: this._state.profilePage.newPostText,
@@ -127,21 +129,13 @@ export let store: StoreType = {
         this._state.profilePage.newPostText = ''
         this.rerenderEntireTree(this._state)
     },
-    updateNewPostText (newText: string) {
+    updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this.rerenderEntireTree(this._state)
     },
-
-
-    subscribe (observer) {
-        this.rerenderEntireTree = observer
-    },
-
-    getState () {
+    getState() {
         return this._state
-}
-
-
+    }
 }
 
 
