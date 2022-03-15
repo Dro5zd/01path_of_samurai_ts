@@ -1,15 +1,14 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
-import {postMessageType} from '../../../redux/state';
+import {ActionsTypes, postMessageType} from '../../../redux/state';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
 
 type MyPostsProps = {
     postMessage: postMessageType[]
-    addPost: (postMessage: string) => void
-    updateNewPostText: (newPost: string) => void
+    dispatch: (action: ActionsTypes) => void
     newPostText: string
 }
 
@@ -17,12 +16,11 @@ const MyPosts = (props: MyPostsProps) => {
     let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
 
     const onClickAddPostButtonHandler = () => {
-        props.addPost(props.newPostText)
-        // rerenderEntireTree()
+        props.dispatch({type: 'ADD-POST', message: props.newPostText})
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewPostText(e.currentTarget.value)
+        props.dispatch({type: 'UPDATE-NEW-POST', newText:e.currentTarget.value })
     }
 
     return (
