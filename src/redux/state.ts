@@ -23,6 +23,7 @@ export type messageItemType = {
 export type dialogsPageType = {
     dialogItem: Array<dialogItemType>
     messageItem: Array<messageItemType>
+    newMessageText: string
 }
 
 export type RootStateType = {
@@ -40,11 +41,29 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostAC>
+export type ActionsTypes =
+    ReturnType<typeof addPostAC>
+    | ReturnType<typeof updateNewPostAC>
+    | ReturnType<typeof addMessageAC>
+    | ReturnType<typeof updateNewMessageAC>
+
 
 export const addPostAC = () => {
     return {
         type: 'ADD-POST'
+    } as const
+}
+
+export const addMessageAC = () => {
+    return {
+        type: 'ADD-MESSAGE',
+    } as const
+}
+
+export const updateNewMessageAC = (newMessage: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE',
+        newMessage: newMessage
     } as const
 }
 
@@ -125,7 +144,8 @@ export let store: StoreType = {
                 {id: 2, title: 'Hi'},
                 {id: 3, title: 'How r u?'},
                 {id: 4, title: 'I\'m fine!!!'},
-            ]
+            ],
+            newMessageText: ''
         }
 
     },
@@ -152,6 +172,17 @@ export let store: StoreType = {
             this._rerenderEntireTree(this._state)
         } else if (action.type === 'UPDATE-NEW-POST') {
             this._state.profilePage.newPostText = action.newText
+            this._rerenderEntireTree(this._state)
+        } else if (action.type === 'ADD-MESSAGE') {
+            const newMessage: messageItemType = {
+                id: new Date().getTime(),
+                title: this._state.dialogsPage.newMessageText
+            };
+            this._state.dialogsPage.messageItem.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            this._rerenderEntireTree(this._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
+            this._state.dialogsPage.newMessageText = action.newMessage
             this._rerenderEntireTree(this._state)
         }
     }
