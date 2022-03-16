@@ -1,3 +1,6 @@
+import profileReducer from './profile-reducer';
+import dialogsReducer from './dialogs-reducer';
+
 export type postMessageType = {
     id: number
     message: string
@@ -161,30 +164,9 @@ export let store: StoreType = {
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            const newPost: postMessageType = {
-                id: new Date().getTime(),
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.postMessage.push(newPost);
-            this._state.profilePage.newPostText = ''
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST') {
-            this._state.profilePage.newPostText = action.newText
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === 'ADD-MESSAGE') {
-            const newMessage: messageItemType = {
-                id: new Date().getTime(),
-                title: this._state.dialogsPage.newMessageText
-            };
-            this._state.dialogsPage.messageItem.push(newMessage)
-            this._state.dialogsPage.newMessageText = ''
-            this._rerenderEntireTree(this._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE') {
-            this._state.dialogsPage.newMessageText = action.newMessage
-            this._rerenderEntireTree(this._state)
-        }
+        this._state.profilePage=profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage=dialogsReducer(this._state.dialogsPage, action)
+        this._rerenderEntireTree(this._state)
     }
 }
 
