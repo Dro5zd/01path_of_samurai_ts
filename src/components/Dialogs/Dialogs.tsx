@@ -2,7 +2,12 @@ import React, {ChangeEvent} from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css"
 import Messages from './Messages/Messages'
-import {ActionsTypes, addPostAC, dialogItemType, messageItemType, updateNewPostAC} from '../../redux/state';
+import {
+    ActionsTypes,
+    addMessageAC,
+    dialogItemType,
+    messageItemType, updateNewMessageAC,
+} from '../../redux/state';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -10,6 +15,7 @@ type dialogsPagePropsType = {
     dialogItem: dialogItemType[],
     messageItem: messageItemType[],
     dispatch: (action: ActionsTypes) => void
+    newMessageText: string
 }
 
 
@@ -21,11 +27,11 @@ const Dialogs = (props: dialogsPagePropsType) => {
     id={d.id}/>)
 
     const onClickAddPostButtonHandler = () => {
-        props.dispatch(addPostAC())
+        props.dispatch(addMessageAC())
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewPostAC(e.currentTarget.value))
+        props.dispatch(updateNewMessageAC(e.currentTarget.value))
     }
     return (
         <div>
@@ -41,13 +47,12 @@ const Dialogs = (props: dialogsPagePropsType) => {
                 <TextField id="outlined-basic"
                            label="Outlined"
                            variant="outlined"
-                           value={""}
+                           value={props.newMessageText}
                            onChange={onPostChange}/>
 
                 <Button onClick={onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon/>}>
                     Send
                 </Button>
-
             </div>
         </div>
     );
