@@ -38,7 +38,9 @@ const Dialogs = (props: dialogsPagePropsType) => {
                 </div>
             </div>
             <div>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                <TextField id="outlined-basic"
+                           label="Outlined"
+                           variant="outlined"
                            value={""}
                            onChange={onPostChange}/>
 

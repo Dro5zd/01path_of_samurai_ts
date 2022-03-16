@@ -26,7 +26,9 @@ const MyPosts = (props: MyPostsProps) => {
     return (
         <div className={s.posts}>
             <div>
-                <TextField id="outlined-basic" label="Outlined" variant="outlined"
+                <TextField id="outlined-basic"
+                           label="Outlined"
+                           variant="outlined"
                            value={props.newPostText}
                            onChange={onPostChange}/>
 
