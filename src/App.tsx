@@ -12,6 +12,8 @@ import {ActionsTypes, RootStateType} from './redux/store';
 import Sidebar from './components/Sidebar/Sidebar';
 
 type AppPropsType = {
+    state: RootStateType
+    dispatch: (action: ActionsTypes) => void
     store: any
 }
 
@@ -24,18 +26,19 @@ const App = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile postMessage={props.store.profilePage?.postMessage}
-                                             newPostText={props.store.profilePage?.newPostText}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs dialogItem={props.store.dialogsPage?.dialogItem } newMessageText={props.store.dialogsPage?.newMessageText}
-                                                               messageItem={props.store.dialogsPage?.messageItem}
-                                                               />}/>
+                           element={<Profile postMessage={props.state.profilePage?.postMessage}
+                                             dispatch={props.dispatch}
+                                             newPostText={props.state.profilePage?.newPostText}/>}/>
+                    <Route path="/dialogs/*" element={<Dialogs dialogItem={props.state.dialogsPage?.dialogItem } newMessageText={props.store.dialogsPage?.newMessageText}
+                                                               messageItem={props.state.dialogsPage?.messageItem}
+                                                               dispatch={props.dispatch}/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
                     <Route path="/settings/*" element={<Settings/>}/>
                 </Routes>
             </div>
-            <Sidebar contactItem={props.store.dialogsPage.dialogItem}/>
+            <Sidebar contactItem={props.state.dialogsPage.dialogItem}/>
         </div>
     )
 }

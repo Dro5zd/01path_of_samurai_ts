@@ -6,6 +6,7 @@ import s from './Profile.module.css'
 
 type ProfilePropsType = {
     postMessage: postMessageType[]
+    dispatch: (action: ActionsTypes) => void
     newPostText: string
 }
 
@@ -14,6 +15,7 @@ const Profile = (props: ProfilePropsType) => {
         <div className={s.pContent}>
             <ProfileInfo/>
             <MyPosts postMessage={props.postMessage}
+                     dispatch={props.dispatch}
                      newPostText={props.newPostText}/>
         </div>
     );

@@ -2,7 +2,7 @@ import {combineReducers, createStore} from '@reduxjs/toolkit';
 import profileReducer, {ProfileReducerType} from './profile-reducer';
 import dialogsReducer, {DialogsReducerType} from './dialogs-reducer';
 
-export type StoreType = {
+export type StoreReduxType = {
     profilePage: ProfileReducerType
     dialogsPage: DialogsReducerType
 }
@@ -12,7 +12,7 @@ let reducers = combineReducers({
     dialogsPage: dialogsReducer
 })
 
-let store:StoreType = createStore(reducers)
+let store:any = createStore(reducers)
 
 
 export default store
