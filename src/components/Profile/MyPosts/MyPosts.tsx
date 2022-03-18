@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
-import {ActionsTypes, addPostAC, postMessageType, updateNewPostAC} from '../../../redux/state';
+import {ActionsTypes, addPostAC, postMessageType, updateNewPostAC} from '../../../redux/store';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -13,7 +13,7 @@ type MyPostsProps = {
 }
 
 const MyPosts = (props: MyPostsProps) => {
-    let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
+    let postMessageItem = props.postMessage?.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
 
     const onClickAddPostButtonHandler = () => {
         props.dispatch(addPostAC())

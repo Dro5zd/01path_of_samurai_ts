@@ -7,7 +7,7 @@ import {
     addMessageAC,
     dialogItemType,
     messageItemType, updateNewMessageAC,
-} from '../../redux/state';
+} from '../../redux/store';
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -20,10 +20,10 @@ type dialogsPagePropsType = {
 
 
 const Dialogs = (props: dialogsPagePropsType) => {
-    let family = props.dialogItem.filter(i => (i.id <= 4))
+    let family = props.dialogItem?.filter(i => (i.id <= 4))
 
-    let dialogsElement = family.map(d => <DialogItem  key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
-    let messagesItem = props.messageItem.map(d => <Messages key={d.id} title={d.title}
+    let dialogsElement = family?.map(d => <DialogItem  key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
+    let messagesItem = props.messageItem?.map(d => <Messages key={d.id} title={d.title}
     id={d.id}/>)
 
     const onClickAddPostButtonHandler = () => {

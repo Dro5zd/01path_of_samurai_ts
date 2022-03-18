@@ -8,12 +8,11 @@ import {Routes, Route} from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import Music from './components/Music/Music';
 import News from './components/News/News';
-import {ActionsTypes, RootStateType} from './redux/state';
+import {ActionsTypes, RootStateType} from './redux/store';
 import Sidebar from './components/Sidebar/Sidebar';
 
 type AppPropsType = {
-    state: RootStateType
-    dispatch: (action: ActionsTypes) => void
+    store: any
 }
 
 const App = (props: AppPropsType) => {
@@ -25,19 +24,18 @@ const App = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile postMessage={props.state.profilePage.postMessage}
-                                             dispatch={props.dispatch}
-                                             newPostText={props.state.profilePage.newPostText}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs dialogItem={props.state.dialogsPage.dialogItem } newMessageText={props.state.dialogsPage.newMessageText}
-                                                               messageItem={props.state.dialogsPage.messageItem}
-                                                               dispatch={props.dispatch}/>}/>
+                           element={<Profile postMessage={props.store.profilePage?.postMessage}
+                                             newPostText={props.store.profilePage?.newPostText}/>}/>
+                    <Route path="/dialogs/*" element={<Dialogs dialogItem={props.store.dialogsPage?.dialogItem } newMessageText={props.store.dialogsPage?.newMessageText}
+                                                               messageItem={props.store.dialogsPage?.messageItem}
+                                                               />}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
                     <Route path="/settings/*" element={<Settings/>}/>
                 </Routes>
             </div>
-            <Sidebar contactItem={props.state.dialogsPage.dialogItem}/>
+            <Sidebar contactItem={props.store.dialogsPage.dialogItem}/>
         </div>
     )
 }

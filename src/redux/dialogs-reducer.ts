@@ -1,12 +1,12 @@
-import {ActionsTypes, messageItemType} from './state';
+import {ActionsTypes, dialogItemType, messageItemType} from './store';
 
-// type DialogsReducerType = {
-//     state: any
-//     action: any
-// }
+export type DialogsReducerType = {
+    dialogItem: Array<dialogItemType>
+    messageItem: Array<messageItemType>
+    newMessageText: string
+}
 
-const initialState = {
-    dialogsPage: {
+const initialState: DialogsReducerType = {
         dialogItem: [
             {
                 id: 1,
@@ -67,10 +67,9 @@ const initialState = {
             {id: 4, title: 'I\'m fine!!!'},
         ],
         newMessageText: ''
-    }
 }
 
-const dialogsReducer = (state: any = initialState, action: ActionsTypes) => {
+const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsReducerType => {
     switch (action.type) {
         case 'ADD-MESSAGE':
             const newMessage: messageItemType = {

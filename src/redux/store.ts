@@ -159,6 +159,7 @@ export let store: StoreType = {
     subscribe(observer) {
         this._rerenderEntireTree = observer
     },
+
     getState() {
         return this._state
     },
