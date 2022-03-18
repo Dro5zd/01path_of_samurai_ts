@@ -1,20 +1,16 @@
 import React, {ChangeEvent} from 'react';
-import s from './MyPosts.module.css'
-import Post from './Post/Post';
 
-import {Button, TextField} from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import {ActionsTypes, addPostAC, postMessageType, updateNewPostAC} from '../../../redux/store';
+import MyPosts from './MyPosts';
 
 
-type MyPostsProps = {
+type MyPostsContainerProps = {
     postMessage: postMessageType[]
     dispatch: (action: ActionsTypes) => void
     newPostText: string
 }
 
-const MyPosts = (props: MyPostsProps) => {
-    let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
+const MyPostsContainer = (props: MyPostsContainerProps) => {
 
     const onClickAddPostButtonHandler = () => {
         props.dispatch(addPostAC())
@@ -25,22 +21,8 @@ const MyPosts = (props: MyPostsProps) => {
     }
 
     return (
-        <div className={s.posts}>
-            <div>
-                <TextField id="outlined-basic"
-                           label="Outlined"
-                           variant="outlined"
-                           value={props.newPostText}
-                           onChange={onPostChange}/>
-
-                <Button onClick={onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon/>}>
-                    Send
-                </Button>
-
-            </div>
-            {postMessageItem}
-        </div>
+        <MyPosts postMessage={props.postMessage} onClickAddPostButtonHandler={onClickAddPostButtonHandler} onPostChange={onPostChange} newPostText={props.newPostText}/>
     );
 }
 
-export default MyPosts
+export default MyPostsContainer

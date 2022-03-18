@@ -1,8 +1,8 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {ActionsTypes, postMessageType} from '../../redux/store';
 import s from './Profile.module.css'
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 type ProfilePropsType = {
     postMessage: postMessageType[]
@@ -14,7 +14,7 @@ const Profile = (props: ProfilePropsType) => {
     return (
         <div className={s.pContent}>
             <ProfileInfo/>
-            <MyPosts postMessage={props.postMessage}
+            <MyPostsContainer postMessage={props.postMessage}
                      dispatch={props.dispatch}
                      newPostText={props.newPostText}/>
         </div>

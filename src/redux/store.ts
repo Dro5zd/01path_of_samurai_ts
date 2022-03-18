@@ -29,17 +29,17 @@ export type dialogsPageType = {
     newMessageText: string
 }
 
-export type RootStateType = {
+export type RootStateType1 = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
 }
 
 export type StoreType = {
-    _state: RootStateType
-    _rerenderEntireTree: (state: RootStateType) => void
+    _state: RootStateType1
+    _rerenderEntireTree: (state: RootStateType1) => void
 
-    subscribe: (observer: (state: RootStateType) => void) => void
-    getState: () => RootStateType
+    subscribe: (observer: (state: RootStateType1) => void) => void
+    getState: () => RootStateType1
 
     dispatch: (action: ActionsTypes) => void
 }

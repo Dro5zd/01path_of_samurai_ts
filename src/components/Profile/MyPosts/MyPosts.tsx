@@ -1,29 +1,21 @@
 import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
-import Post from './Post/Post';
 
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import {ActionsTypes, addPostAC, postMessageType, updateNewPostAC} from '../../../redux/store';
+import {postMessageType} from '../../../redux/store';
+import Post from './Post/Post';
 
 
 type MyPostsProps = {
     postMessage: postMessageType[]
-    dispatch: (action: ActionsTypes) => void
+    onClickAddPostButtonHandler: () => void
+    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
     newPostText: string
 }
 
 const MyPosts = (props: MyPostsProps) => {
-    let postMessageItem = props.postMessage.map((m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>))
-
-    const onClickAddPostButtonHandler = () => {
-        props.dispatch(addPostAC())
-    }
-
-    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(updateNewPostAC(e.currentTarget.value))
-    }
-
+    let postMessageItem = props.postMessage.map(m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>)
     return (
         <div className={s.posts}>
             <div>
@@ -31,9 +23,9 @@ const MyPosts = (props: MyPostsProps) => {
                            label="Outlined"
                            variant="outlined"
                            value={props.newPostText}
-                           onChange={onPostChange}/>
+                           onChange={props.onPostChange}/>
 
-                <Button onClick={onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon/>}>
+                <Button onClick={props.onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon/>}>
                     Send
                 </Button>
 
