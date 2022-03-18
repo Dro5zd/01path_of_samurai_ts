@@ -3,18 +3,19 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import {Routes, Route} from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import Music from './components/Music/Music';
 import News from './components/News/News';
-import {ActionsTypes, RootStateType1} from './redux/store';
+import {ActionsTypes, RootStateType1, StoreType} from './redux/store';
 import Sidebar from './components/Sidebar/Sidebar';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import {RootStateType} from './redux/store-redux';
 
 type AppPropsType = {
     state: RootStateType1
     dispatch: (action: ActionsTypes) => void
-    store: any
+    store: StoreType
 }
 
 const App = (props: AppPropsType) => {
@@ -26,13 +27,9 @@ const App = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile postMessage={props.state.profilePage.postMessage}
-                                             dispatch={props.dispatch}
-                                             newPostText={props.state.profilePage.newPostText}/>}/>
-                    <Route path="/dialogs/*" element={<Dialogs dialogItem={props.state.dialogsPage.dialogItem}
-                                                               newMessageText={props.store.dialogsPage?.newMessageText}
-                                                               messageItem={props.state.dialogsPage.messageItem}
-                                                               dispatch={props.dispatch}/>}/>
+                           element={<Profile store={props.store}/>}/>
+                    <Route path="/dialogs/*"
+                           element={<DialogsContainer store={props.store}/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
