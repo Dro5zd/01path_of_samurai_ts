@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import {addPostAC, StoreType, updateNewPostAC} from '../../../redux/store';
 import MyPosts from './MyPosts';
+import {connect} from 'net';
 
 
 type MyPostsContainerProps = {
@@ -21,6 +22,9 @@ const MyPostsContainer = (props: MyPostsContainerProps) => {
     return (
         <MyPosts postMessage={state.profilePage.postMessage} onClickAddPostButtonHandler={onClickAddPostButtonHandler} onPostChange={onPostChange} newPostText={state.profilePage.newPostText}/>
     );
+
 }
+
+
 
 export default MyPostsContainer
