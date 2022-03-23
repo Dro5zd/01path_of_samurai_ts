@@ -1,7 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import {addPostAC, StoreType, updateNewPostAC} from '../../../redux/store';
 import MyPosts from './MyPosts';
-import {connect} from 'net';
 
 
 type MyPostsContainerProps = {

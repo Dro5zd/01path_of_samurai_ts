@@ -1,51 +1,41 @@
-import React, {ChangeEvent} from 'react';
-import {addMessageAC, updateNewMessageAC} from '../../redux/store';
+import {ChangeEvent} from 'react';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
+import {addMessageAC, DialogsReducerType, updateNewMessageAC} from '../../redux/dialogs-reducer';
+import {RootStateType} from '../../redux/store-redux';
+import {Dispatch} from '@reduxjs/toolkit';
 
 
-type DialogsContainerPropsType = {
-    store: any
+type mapStateToPropsPropsType = {
+    messageItem: DialogsReducerType
+    newMessageText: string
 }
 
-
-const DialogsContainer = (props: DialogsContainerPropsType) => {
-
-    let state = props.store.getState().dialogsPage
-
-    const onClickAddPostButtonHandler = () => {
-        props.store.dispatch(addMessageAC())
-    }
-
-    const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.store.dispatch(updateNewMessageAC(e.currentTarget.value))
-    }
-
-    return (
-        <Dialogs onPostChange={onPostChange} onClickAddPostButtonHandler={onClickAddPostButtonHandler}
-                 messageItem={state} newMessageText={state.newMessageText}/>
-    )
+type mapDispatchToPropsPropsType = {
+    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+    onClickAddPostButtonHandler: () => void
 }
 
-let mapStateToProps = (state) => {
+export type DialogsPropsType = mapStateToPropsPropsType & mapDispatchToPropsPropsType
+
+let mapStateToProps = (state: RootStateType): mapStateToPropsPropsType => {
     return {
         messageItem: state.dialogsPage,
         newMessageText: state.dialogsPage.newMessageText
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsPropsType => {
     return {
-        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>)=> {
+        onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => {
             dispatch(updateNewMessageAC(e.currentTarget.value))
         },
-        onClickAddPostButtonHandler: ()=>{
+        onClickAddPostButtonHandler: () => {
             dispatch(addMessageAC())
         }
     }
 }
 
-
-const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 export default DialogsContainer

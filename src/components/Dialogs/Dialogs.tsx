@@ -1,21 +1,20 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css'
 import Messages from './Messages/Messages'
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import {dialogsPageType} from '../../redux/store';
+import {DialogsPropsType} from './DialogsContainer';
 
-type DialogsPagePropsType = {
-    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>)=>void
-    onClickAddPostButtonHandler: ()=>void
-    messageItem: dialogsPageType
-    newMessageText: string
-}
+// type DialogsPagePropsType = {
+//     onPostChange: (e: ChangeEvent<HTMLTextAreaElement>)=>void
+//     onClickAddPostButtonHandler: ()=>void
+//     messageItem: dialogsPageType
+//     newMessageText: string
+// }
 
 
-const Dialogs = (props: DialogsPagePropsType) => {
-
+const Dialogs = (props: DialogsPropsType) => {
     let family = props.messageItem.dialogItem.filter(i => (i.id <= 4))
 
     let dialogsElement = family.map(d => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)

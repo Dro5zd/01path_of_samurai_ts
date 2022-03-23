@@ -6,6 +6,9 @@ export type DialogsReducerType = {
     newMessageText: string
 }
 
+// export type ActionsTypes = ReturnType<typeof addMessageAC>
+//     | ReturnType<typeof updateNewMessageAC>
+
 const initialState: DialogsReducerType = {
         dialogItem: [
             {
@@ -84,6 +87,19 @@ const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsRedu
             break;
     }
     return state
+}
+
+export const addMessageAC = () => {
+    return {
+        type: 'ADD-MESSAGE',
+    } as const
+}
+
+export const updateNewMessageAC = (newMessage: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE',
+        newMessage: newMessage
+    } as const
 }
 
 export default dialogsReducer

@@ -13,6 +13,11 @@ let initialState = {
         newPostText: ''
 }
 
+// export type ActionsTypes =
+//     ReturnType<typeof addPostAC>
+//     | ReturnType<typeof updateNewPostAC>
+
+
 const profileReducer = (state = initialState, action: ActionsTypes):ProfileReducerType => {
     switch (action.type) {
         case 'ADD-POST':
@@ -29,6 +34,19 @@ const profileReducer = (state = initialState, action: ActionsTypes):ProfileReduc
             break;
     }
     return state
+}
+
+export const addPostAC = () => {
+    return {
+        type: 'ADD-POST'
+    } as const
+}
+
+export const updateNewPostAC = (newText: string) => {
+    return {
+        type: 'UPDATE-NEW-POST',
+        newText: newText
+    } as const
 }
 
 export default profileReducer
