@@ -90,25 +90,23 @@ const initialState: DialogsReducerType = {
 
 const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsReducerType => {
     switch (action.type) {
-        case 'ADD-MESSAGE':{
-            // const newMessage: MessageItemType = {
-            //     id: new Date().getTime(),
-            //     title: state.newMessageText
-            // };
-            // let stateCopy = {...state}
-            // stateCopy.messageItem.push(newMessage)
-            // stateCopy.newMessageText = ''
+        case 'ADD-MESSAGE': {
+            const newMessage: MessageItemType = {
+                id: new Date().getTime(),
+                title: state.newMessageText
+            };
             return {
                 ...state,
                 newMessageText: '',
-                messageItem: [...state.messageItem,{id: new Date().getTime(),
-                    title: state.newMessageText}]}
+                messageItem: [...state.messageItem, newMessage]
+            }
         }
 
-        case 'UPDATE-NEW-MESSAGE':{
-            let stateCopy = {...state}
-            stateCopy.newMessageText = action.newMessage
-            return stateCopy
+        case 'UPDATE-NEW-MESSAGE': {
+            return {
+                ...state,
+                newMessageText: action.newMessage
+            }
         }
 
     }
