@@ -1,37 +1,46 @@
-import {ActionsTypes, postMessageType} from './store';
+import {ActionsTypes} from './dialogs-reducer';
+
 
 export type ProfileReducerType = {
-    postMessage: Array<postMessageType>
+    postMessage: Array<PostMessageType>
     newPostText: string
 }
 
-let initialState = {
-        postMessage: [
-            {id: 1, message: 'Hi. How r u?', likeCount: 12},
-            {id: 2, message: 'Why u so serious?', likeCount: 45}
-        ],
-        newPostText: ''
+export type PostMessageType = {
+    id: number
+    message: string
+    likeCount: number
 }
 
-// export type ActionsTypes =
-//     ReturnType<typeof addPostAC>
-//     | ReturnType<typeof updateNewPostAC>
+let initialState: ProfileReducerType = {
+    postMessage: [
+        {id: 1, message: 'Hi. How r u?', likeCount: 12},
+        {id: 2, message: 'Why u so serious?', likeCount: 45}
+    ],
+    newPostText: ''
+}
 
-
-const profileReducer = (state = initialState, action: ActionsTypes):ProfileReducerType => {
+const profileReducer = (state = initialState, action: ActionsTypes): ProfileReducerType => {
     switch (action.type) {
-        case 'ADD-POST':
-            const newPost: postMessageType = {
+        case 'ADD-POST': {
+            const newPost: PostMessageType = {
                 id: new Date().getTime(),
                 message: state.newPostText,
                 likeCount: 0
             };
-            state.postMessage.push(newPost);
-            state.newPostText = ''
-            break;
-        case 'UPDATE-NEW-POST':
-            state.newPostText = action.newText
-            break;
+            let stateCopy = {...state}
+            stateCopy.postMessage = [...state.postMessage]
+            stateCopy.postMessage.push(newPost);
+            stateCopy.newPostText = ''
+            return stateCopy
+        }
+
+        case 'UPDATE-NEW-POST': {
+            let stateCopy = {...state}
+            stateCopy.postMessage = [...state.postMessage]
+            stateCopy.newPostText = action.newText
+            return stateCopy
+        }
     }
     return state
 }

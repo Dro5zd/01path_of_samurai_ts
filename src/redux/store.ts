@@ -1,54 +1,15 @@
-import profileReducer, {addPostAC, updateNewPostAC} from './profile-reducer';
-import dialogsReducer, {addMessageAC, updateNewMessageAC} from './dialogs-reducer';
 
-export type postMessageType = {
-    id: number
-    message: string
-    likeCount: number
-}
+import dialogsReducer, {ActionsTypes} from './dialogs-reducer';
+import {RootStateType} from './store-redux';
+import profileReducer from './profile-reducer';
 
-export type profilePageType = {
-    postMessage: Array<postMessageType>
-    newPostText: string
-}
 
-export type dialogItemType = {
-    id: number
-    name: string
-    avatar: string
-}
-
-export type messageItemType = {
-    id: number
-    title: string
-}
-
-export type dialogsPageType = {
-    dialogItem: Array<dialogItemType>
-    messageItem: Array<messageItemType>
-    newMessageText: string
-}
-
-export type RootStateType1 = {
-    profilePage: profilePageType
-    dialogsPage: dialogsPageType
-}
 
 export type StoreType = {
-    _state: RootStateType1
-    _rerenderEntireTree: (state: RootStateType1) => void
-
-    subscribe: (observer: (state: RootStateType1) => void) => void
-    getState: () => RootStateType1
-
+    _state: RootStateType
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes =
-    ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostAC>
-    | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof updateNewMessageAC>
 
 export let store: StoreType = {
     _state: {
@@ -125,22 +86,11 @@ export let store: StoreType = {
         }
 
     },
-    _rerenderEntireTree() {
-        console.log('GoGoGo')
-    },
 
-    subscribe(observer) {
-        this._rerenderEntireTree = observer
-    },
-
-    getState() {
-        return this._state
-    },
 
     dispatch(action) {
         this._state.profilePage=profileReducer(this._state.profilePage, action)
         this._state.dialogsPage=dialogsReducer(this._state.dialogsPage, action)
-        this._rerenderEntireTree(this._state)
     }
 }
 

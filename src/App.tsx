@@ -7,19 +7,11 @@ import {Routes, Route} from 'react-router-dom';
 import Settings from './components/Settings/Settings';
 import Music from './components/Music/Music';
 import News from './components/News/News';
-import {ActionsTypes, RootStateType1, StoreType} from './redux/store';
 import Sidebar from './components/Sidebar/Sidebar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import {RootStateType} from './redux/store-redux';
 
-type AppPropsType = {
-    state: RootStateType1
-    dispatch: (action: ActionsTypes) => void
-    store: StoreType
-}
 
-const App = (props: AppPropsType) => {
-
+const App = () => {
     return (
         <div className="app-wrapper">
             <Header/>
@@ -27,16 +19,17 @@ const App = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Routes>
                     <Route path="/profile/*"
-                           element={<Profile store={props.store}/>}/>
+                           element={<Profile/>}/>
                     <Route path="/dialogs/*"
-                           element={<DialogsContainer store={props.store}/>}/>
+                           element={<DialogsContainer/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
                     <Route path="/settings/*" element={<Settings/>}/>
                 </Routes>
             </div>
-            <Sidebar contactItem={props.state.dialogsPage.dialogItem}/>
+            {/*<Sidebar contactItem={props.state.dialogsPage.dialogItem}/>*/}
+            <Sidebar/>
         </div>
     )
 }

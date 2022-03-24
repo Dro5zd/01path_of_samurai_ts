@@ -1,18 +1,10 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import s from './MyPosts.module.css'
-
 import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import {postMessageType} from '../../../redux/store';
 import Post from './Post/Post';
+import {MyPostsProps} from './MyPostsContainer';
 
-
-type MyPostsProps = {
-    postMessage: postMessageType[]
-    onClickAddPostButtonHandler: () => void
-    onPostChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
-    newPostText: string
-}
 
 const MyPosts = (props: MyPostsProps) => {
     let postMessageItem = props.postMessage.map(m => <Post key={m.id} message={m.message} likeCount={m.likeCount}/>)

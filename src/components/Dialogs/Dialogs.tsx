@@ -6,13 +6,6 @@ import {Button, TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import {DialogsPropsType} from './DialogsContainer';
 
-// type DialogsPagePropsType = {
-//     onPostChange: (e: ChangeEvent<HTMLTextAreaElement>)=>void
-//     onClickAddPostButtonHandler: ()=>void
-//     messageItem: dialogsPageType
-//     newMessageText: string
-// }
-
 
 const Dialogs = (props: DialogsPropsType) => {
     let family = props.messageItem.dialogItem.filter(i => (i.id <= 4))
@@ -20,7 +13,7 @@ const Dialogs = (props: DialogsPropsType) => {
     let dialogsElement = family.map(d => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
 
     let messagesItem = props.messageItem.messageItem.map(d => <Messages key={d.id} title={d.title}
-                                                             id={d.id}/>)
+                                                                        id={d.id}/>)
 
     return (
         <div>
