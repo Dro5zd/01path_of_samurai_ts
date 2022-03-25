@@ -1,4 +1,6 @@
 import {addPostAC, updateNewPostAC} from './profile-reducer';
+import dialogItem from '../components/Dialogs/DialogItem/DialogItem';
+import {v1} from 'uuid';
 
 
 export type DialogsReducerType = {
@@ -14,8 +16,11 @@ export type DialogItemType = {
 }
 
 export type MessageItemType = {
-    id: number
-    title: string
+    id: string
+    avatar: string
+    name: string
+    message: string
+    time: string
 }
 
 export type ActionsTypes =
@@ -80,10 +85,32 @@ const initialState: DialogsReducerType = {
     ],
 
     messageItem: [
-        {id: 1, title: 'Hello'},
-        {id: 2, title: 'Hi'},
-        {id: 3, title: 'How r u?'},
-        {id: 4, title: 'I\'m fine!!!'},
+        {
+            id: v1(),
+            avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+            name: 'Andrii Veseliy',
+            time: '10:15',
+            message: 'Hello'
+        },
+        {
+            id: v1(),
+            avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+            name: 'Andrii Veseliy',
+            time: '10:15',
+            message: 'Hi'
+        },
+        {
+            id: v1(), avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+            name: 'Andrii Veseliy',
+            time: '10:15',
+            message: 'How r u?'
+        },
+        {
+            id: v1(), avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+            name: 'Andrii Veseliy',
+            time: '10:15',
+            message: 'I\'m fine!!!'
+        },
     ],
     newMessageText: ''
 }
@@ -91,9 +118,13 @@ const initialState: DialogsReducerType = {
 const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsReducerType => {
     switch (action.type) {
         case 'ADD-MESSAGE': {
+            const currentTime = `${new Date().getHours()}:${(new Date().getMinutes() < 10 ? '0' : '') + new Date().getMinutes()}`
             const newMessage: MessageItemType = {
-                id: new Date().getTime(),
-                title: state.newMessageText
+                id: v1(),
+                avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+                name: 'Andrii Veseliy',
+                time: currentTime,
+                message: state.newMessageText
             };
             return {
                 ...state,

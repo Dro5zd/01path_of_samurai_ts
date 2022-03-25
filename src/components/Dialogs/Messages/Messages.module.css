@@ -1,7 +1,58 @@
 .item {
     display: flex;
-    padding: 5px;
-    color: red;
-    font-size: 20px;
-
 }
+
+.item img {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.msg {
+    display: inline-block;
+    font-size: 15pt;
+    width: 250px;
+    color: black;
+    margin: 2px 0 0 25px;
+    flex-basis: 50%;
+}
+
+.name {
+    display: block;
+    font-size: 15pt;
+    color: fuchsia;
+    margin: 15px 0 0 25px;
+}
+
+.time {
+    display:block;
+    font-size: 15pt;
+    line-height: 13pt;
+    color: rgba(39, 221, 130, 0.8);
+    margin: 0 0 10px 250px;
+}
+
+.messages_container {
+    margin-top: 10px;
+    position: relative;
+    min-height: 80px;
+    min-width: 325px;
+    background-color: rgb(207, 217, 222);
+    border-radius: 15px 15px 15px 0;
+}
+
+.messages_container::before {
+    content: "";
+    margin-left: -50px;
+    position: absolute;
+    background-color: transparent;
+    bottom: 0;
+    height: 25px;
+    width: 50px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 25px 0 0 0 rgb(207, 217, 222);
+}
+

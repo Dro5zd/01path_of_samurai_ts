@@ -2,6 +2,7 @@
 import dialogsReducer, {ActionsTypes} from './dialogs-reducer';
 import {RootStateType} from './store-redux';
 import profileReducer from './profile-reducer';
+import {v1} from 'uuid';
 
 
 
@@ -77,10 +78,18 @@ export let store: StoreType = {
             ],
 
             messageItem: [
-                {id: 1, title: 'Hello'},
-                {id: 2, title: 'Hi'},
-                {id: 3, title: 'How r u?'},
-                {id: 4, title: 'I\'m fine!!!'},
+                {id: v1(), message: 'Hello', avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+                    name: 'Andrii Veseliy',
+                    time: '10:15',},
+                {id: v1(), message: 'Hi', avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+                    name: 'Andrii Veseliy',
+                    time: '10:15',},
+                {id: v1(), message: 'How r u?', avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+                    name: 'Andrii Veseliy',
+                    time: '10:15',},
+                {id: v1(), message: 'I\'m fine!!!', avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
+                    name: 'Andrii Veseliy',
+                    time: '10:15',},
             ],
             newMessageText: ''
         }

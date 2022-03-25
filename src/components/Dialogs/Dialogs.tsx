@@ -12,8 +12,8 @@ const Dialogs = (props: DialogsPropsType) => {
 
     let dialogsElement = family.map(d => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
 
-    let messagesItem = props.messageItem.messageItem.map(d => <Messages key={d.id} title={d.title}
-                                                                        id={d.id}/>)
+    let messagesItem = props.messageItem.messageItem.map(d => <Messages key={d.id} message={d.message}
+                                                                        id={d.id} name={d.name} avatar={d.avatar} time={d.time}/>)
 
     return (
         <div>
