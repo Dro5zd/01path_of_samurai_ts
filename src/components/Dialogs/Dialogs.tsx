@@ -27,14 +27,10 @@ const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div>
                 <TextField id="outlined-basic"
-                           label="Outlined"
                            variant="outlined"
                            value={props.newMessageText}
                            onChange={props.onPostChange}/>
-
-                <Button onClick={props.onClickAddPostButtonHandler} variant="contained" endIcon={<SendIcon/>}>
-                    Send
-                </Button>
+                <SendIcon onClick={props.onClickAddPostButtonHandler}/>
             </div>
         </div>
     );
