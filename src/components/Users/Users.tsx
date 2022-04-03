@@ -5,7 +5,7 @@ export const Users = () =>{
 
 
     return (
-        <div>
+        <div className={s.usersContainer}>
             Users
         </div>
     );
