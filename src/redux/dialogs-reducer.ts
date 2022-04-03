@@ -1,5 +1,4 @@
 import {addPostAC, updateNewPostAC} from './profile-reducer';
-import dialogItem from '../components/Dialogs/DialogItem/DialogItem';
 import {v1} from 'uuid';
 
 

@@ -9,6 +9,7 @@ import Music from './components/Music/Music';
 import News from './components/News/News';
 import Sidebar from './components/Sidebar/Sidebar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import {Users} from './components/Users/Users';
 
 
 const App = () => {
@@ -26,9 +27,9 @@ const App = () => {
                     <Route path="/news/*" element={<News/>}/>
                     <Route path="/music/*" element={<Music/>}/>
                     <Route path="/settings/*" element={<Settings/>}/>
+                    <Route path="/users/*" element={<Users/>}/>
                 </Routes>
             </div>
-            {/*<Sidebar contactItem={props.state.dialogsPage.dialogItem}/>*/}
             <Sidebar/>
         </div>
     )

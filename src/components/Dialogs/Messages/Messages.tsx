@@ -7,7 +7,9 @@ function Messages(props:MessageItemType) {
     return (
         <>
             <div className={s.item}>
-                <img src={props.avatar} alt="avatar"/>
+                <div>
+                    <img src={props.avatar} alt="avatar"/>
+                </div>
                 <div className={s.messages_container}>
                     {/*<p className={s.name}>{props.name}</p>*/}
                     <div className={s.msg}>{props.message}</div>
