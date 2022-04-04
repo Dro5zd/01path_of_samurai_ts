@@ -5,34 +5,37 @@ import axios from 'axios';
 import noPhoto from '../../assets/img/noPhoto.png'
 
 
-export class Users extends  React.Component<UsersPropsType> {
+export class Users extends React.Component<UsersPropsType> {
     componentDidMount() {
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
                 this.props.setUsers(response.data.items)
             })
     }
-render() {
-    return (
-        <div className={s.usersContainer}>
-            {this.props.users.map(u => <div key={u.id}>
-                <span>
+
+    render() {
+        return (
+            <div className={s.usersContainer}>
+                <h1>Users</h1>
+                {this.props.users.map(u => <div className={s.usersItem} key={u.id}>
                     <div>
                     <img src={u.photos.small || noPhoto} alt=""/>
                     </div>
-                    <div>
-                        {u.followed ? <button onClick={()=>{this.props.unfollow(u.id)}}>Follow</button> : <button onClick={()=>{this.props.follow(u.id)}}>Unfollow</button> }
-                    </div>
-                </span>
-                    <span>
-                        <div>
+                    <div className={s.usersItemName}>
                         {u.name}
-                        </div>
-                    </span>
-                </div>
-            )}
-        </div>)
-}
+                    </div>
+
+                    <div>
+                        {u.followed ? <button onClick={() => {
+                            this.props.unfollow(u.id)
+                        }}>Follow</button> : <button onClick={() => {
+                            this.props.follow(u.id)
+                        }}>Unfollow</button>}
+                    </div>
+                    </div>
+                )}
+            </div>)
+    }
 
 
 }

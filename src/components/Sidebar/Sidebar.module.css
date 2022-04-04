@@ -1,4 +1,7 @@
 .side {
+    display: flex;
+    flex-direction: column;
+
     padding: 10px 2px;
     grid-area: sidebar;
     background-color: white;
@@ -30,8 +33,9 @@
 
 .contactItem{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    height: 60px;
+    min-height: 60px;
 }
 
 .contactItem:hover {
