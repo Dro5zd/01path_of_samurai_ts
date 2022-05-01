@@ -5,9 +5,9 @@ export type UsersReducerType = {
     currentPage: number
 }
 
-export type LocationType = {
-    country: string
-    city: string
+export type ContactsType = {
+    github: string
+    facebook: string
 }
 
 export type UsersType = {
@@ -15,8 +15,9 @@ export type UsersType = {
     photos: { small: string | null, large: string | null }
     name: string
     status: string
-    location: LocationType
+    contacts: ContactsType
     followed: boolean
+
 }
 
 export type ActionsTypes =

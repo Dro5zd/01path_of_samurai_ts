@@ -27,7 +27,6 @@ type mapDispatchToPropsPropsType = {
     setUsers: (users: UsersType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
-
 }
 
 export type UsersPropsType = mapStateToPropsPropsType & mapDispatchToPropsPropsType
@@ -58,7 +57,6 @@ class UsersContainer extends React.Component<UsersPropsType> {
                       users={this.props.users}
                       follow={this.props.follow}
                       unfollow={this.props.unfollow}/>
-
     }
 }
 
