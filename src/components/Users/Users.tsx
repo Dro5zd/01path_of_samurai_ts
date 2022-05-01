@@ -13,6 +13,10 @@ export class Users extends React.Component<UsersPropsType> {
             })
     }
 
+    onPageChanged = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+    }
+
     render() {
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
@@ -26,7 +30,7 @@ export class Users extends React.Component<UsersPropsType> {
             <div className={s.usersContainer}>
                 <h1>Users</h1>
                 <div className={s.pagesCount}>
-                    {pages.map(p => <span className= {this.props.currentPage === p ? s.selectedPage : ''} onClick={()=>{this.props.setCurrentPage(p)}}>{p}</span>)}
+                    {pages.map(p => <span className= {this.props.currentPage === p ? s.selectedPage : ''} onClick={()=>{this.onPageChanged(p)}}>{p}</span>)}
                 </div>
                 {this.props.users.map(u => <div className={s.usersItem} key={u.id}>
                         <div>
