@@ -30,7 +30,7 @@
 }
 
 .usersContainer img {
-    background-color: #fcce19;
+    /*background-color: #fcce19;*/
     height: 80px;
     width: 80px;
     border-radius: 5px;
@@ -61,6 +61,11 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 40px;
-
     cursor: pointer;
+}
+
+.pagesCount span {
+
+    margin-right: 10px;
+
 }
