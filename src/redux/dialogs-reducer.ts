@@ -82,7 +82,6 @@ const initialState: DialogsReducerType = {
             avatar: 'https://static.wikia.nocookie.net/simpsons/images/5/5f/Season_24_Icon.jpg'
         },
     ],
-
     messageItem: [
         {
             id: v1(),

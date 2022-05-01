@@ -5,7 +5,6 @@ import {RootStateType} from '../../redux/store-redux';
 import {DialogItemType} from '../../redux/dialogs-reducer';
 
 
-
 const Sidebar = () => {
 const contactItem = useSelector<RootStateType, DialogItemType[]>((store) => store.dialogsPage.dialogItem)
     return (

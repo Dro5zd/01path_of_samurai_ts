@@ -1,5 +1,8 @@
 export type UsersReducerType = {
     users: UsersType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 export type LocationType = {
@@ -20,10 +23,15 @@ export type ActionsTypes =
     ReturnType<typeof followAC>
     | ReturnType<typeof unfollowAC>
     | ReturnType<typeof setUsersAC>
+    | ReturnType<typeof setCurrentPageAC>
+
 
 
 const initialState: UsersReducerType = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 21,
+    currentPage: 2
 }
 
 const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerType => {
@@ -49,9 +57,11 @@ const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerT
                 })
             }
         case 'SET-USERS':
-            return {
-                ...state, users: [...state.users, ...action.users]
-            }
+            return {...state, users: action.users}
+
+        case 'SET-CURRENT-PAGE':
+            return {...state, currentPage: action.currentPage}
+
         default:
             return state;
     }
@@ -75,6 +85,13 @@ const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerT
         return {
             type: 'SET-USERS',
             users
+        } as const
+    }
+
+    export const setCurrentPageAC = (currentPage: number) => {
+        return {
+            type: 'SET-CURRENT-PAGE',
+            currentPage
         } as const
     }
 
