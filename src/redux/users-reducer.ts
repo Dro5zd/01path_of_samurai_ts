@@ -34,7 +34,7 @@ const initialState: UsersReducerType = {
     users: [],
     pageSize: 10,
     totalUsersCount: 21,
-    currentPage: 2,
+    currentPage: 1,
     isFetching: false
 }
 
