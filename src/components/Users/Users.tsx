@@ -35,14 +35,14 @@ let Users = (props: UsersType1) => {
                     }}>{p}</span>
                 })}
             </div>
-            {props.users.map(u => <div className={s.usersItem} key={u.id}>
+            {props.users.map(u => <div className={s.usersItem} key={u.userId}>
                     <div>
-                        <NavLink to={'/profile' + u.id}>
+                        <NavLink to={'/profile/' + u.userId}>
                             <img src={u.photos.small || noPhoto} alt=""/>
                         </NavLink>
                     </div>
                     <div className={s.usersItemName}>
-                        {u.name}
+                        {u.fullName}
                     </div>
                     {/*<div className={s.usersItemName}>*/}
                     {/*    {u.contacts.github}*/}
@@ -51,9 +51,9 @@ let Users = (props: UsersType1) => {
                     {/*</div>*/}
                     <div>
                         {u.followed ? <button onClick={() => {
-                            props.unfollow(u.id)
+                            props.unfollow(u.userId)
                         }}>Follow</button> : <button onClick={() => {
-                            props.follow(u.id)
+                            props.follow(u.userId)
                         }}>Unfollow</button>}
                     </div>
                 </div>

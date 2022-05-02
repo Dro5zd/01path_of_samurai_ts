@@ -1,7 +1,9 @@
+import {UsersType} from './users-reducer';
+
 export type ProfileReducerType = {
     postMessage: Array<PostMessageType>
     newPostText: string
-    profile: null
+    profile: null | UsersType
 }
 
 export type PostMessageType = {
@@ -44,14 +46,14 @@ const profileReducer = (state = initialState, action: ActionsTypes): ProfileRedu
                 ...state,
                 newPostText: action.newText
             }
-            }
+        }
         case 'SET-USER-PROFILE': {
+
             return {
                 ...state,
                 profile: action.profile
             }
         }
-
         default:
             return state
     }
@@ -71,7 +73,7 @@ export const updateNewPostAC = (newText: string) => {
     } as const
 }
 
-export const setUserProfile = (profile: null) => {
+export const setUserProfile = (profile: UsersType) => {
     return {
         type: 'SET-USER-PROFILE' as const,
         profile
