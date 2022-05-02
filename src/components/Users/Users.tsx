@@ -35,28 +35,33 @@ let Users = (props: UsersType1) => {
                     }}>{p}</span>
                 })}
             </div>
-            {props.users.map(u => <div className={s.usersItem} key={u.userId}>
-                    <div>
-                        <NavLink to={'/profile/' + u.userId}>
-                            <img src={u.photos.small || noPhoto} alt=""/>
-                        </NavLink>
-                    </div>
-                    <div className={s.usersItemName}>
-                        {u.fullName}
-                    </div>
-                    {/*<div className={s.usersItemName}>*/}
-                    {/*    {u.contacts.github}*/}
-                    {/*    {u.contacts.facebook}*/}
+            {props.users.map(u => {
+                debugger
+                return (
+                    <div className={s.usersItem} key={u.id}>
+                        <div>
+                            <NavLink to={'/profile/' + u.id}>
+                                <img src={u.photos.small || noPhoto} alt=""/>
+                            </NavLink>
+                        </div>
+                        <div className={s.usersItemName}>
+                            {u.name}
+                        </div>
+                        {/*<div className={s.usersItemName}>*/}
+                        {/*    {u.contacts.github}*/}
+                        {/*    {u.contacts.facebook}*/}
 
-                    {/*</div>*/}
-                    <div>
-                        {u.followed ? <button onClick={() => {
-                            props.unfollow(u.userId)
-                        }}>Follow</button> : <button onClick={() => {
-                            props.follow(u.userId)
-                        }}>Unfollow</button>}
+                        {/*</div>*/}
+                        <div>
+                            {u.followed ? <button onClick={() => {
+                                props.unfollow(u.id)
+                            }}>Follow</button> : <button onClick={() => {
+                                props.follow(u.id)
+                            }}>Unfollow</button>}
+                        </div>
                     </div>
-                </div>
+                )
+                }
             )}
         </div>)
 

@@ -6,31 +6,16 @@ export type UsersReducerType = {
     isFetching: boolean
 }
 
-export type ContactsType = {
-    github: string | null
-    facebook: string | null
-    website: string | null
-    vk: string | null
-    twitter: string | null
-    instagram: string | null
-    youtube: string | null
-    mainLink: string | null
-}
-
 export type PhotosType = {
-    small: string | null,
-    large: string | null
+    small: string
+    large: string
 }
 
 export type UsersType = {
-    userId: number
-    aboutMe: string
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
-    photos: PhotosType
-    fullName: string
+    id: number
+    name: string
     status: string
-    contacts: ContactsType
+    photos: PhotosType
     followed: boolean
 }
 
@@ -57,7 +42,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerT
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.userId === action.userId) {
+                    if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
                     return u
@@ -67,7 +52,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerT
             return {
                 ...state,
                 users: state.users.map(u => {
-                    if (u.userId === action.userId) {
+                    if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
                     return u

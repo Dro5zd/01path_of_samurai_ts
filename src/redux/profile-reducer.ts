@@ -1,15 +1,39 @@
-import {UsersType} from './users-reducer';
+import {PhotosType} from './users-reducer';
 
 export type ProfileReducerType = {
     postMessage: Array<PostMessageType>
     newPostText: string
-    profile: null | UsersType
+    profile: null | ProfileUsersType
 }
 
 export type PostMessageType = {
     id: number
     message: string
     likeCount: number
+}
+
+
+export type ContactsType = {
+    github: string
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    mainLink: string
+}
+
+export type ProfileUsersType = {
+    userId: number
+    aboutMe: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: PhotosType
+    fullName: string
+    status: string
+    contacts: ContactsType
+    followed: boolean
 }
 
 let initialState: ProfileReducerType = {
@@ -48,7 +72,6 @@ const profileReducer = (state = initialState, action: ActionsTypes): ProfileRedu
             }
         }
         case 'SET-USER-PROFILE': {
-
             return {
                 ...state,
                 profile: action.profile
@@ -73,7 +96,7 @@ export const updateNewPostAC = (newText: string) => {
     } as const
 }
 
-export const setUserProfile = (profile: UsersType) => {
+export const setUserProfile = (profile: ProfileUsersType) => {
     return {
         type: 'SET-USER-PROFILE' as const,
         profile
