@@ -12,6 +12,7 @@ import {
 import {Dispatch} from '@reduxjs/toolkit';
 import axios from 'axios';
 import Users from './Users';
+import { Preloader } from '../common/Preloader';
 
 type mapStateToPropsPropsType = {
     users: UsersType[]
@@ -19,6 +20,7 @@ type mapStateToPropsPropsType = {
     totalUsersCount: number
     currentPage: number
     setTotalUsersCount: number
+    isFetching: boolean
 }
 
 type mapDispatchToPropsPropsType = {
@@ -27,6 +29,7 @@ type mapDispatchToPropsPropsType = {
     setUsers: (users: UsersType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
+
 }
 
 export type UsersPropsType = mapStateToPropsPropsType & mapDispatchToPropsPropsType
@@ -50,13 +53,16 @@ class UsersContainer extends React.Component<UsersPropsType> {
     }
 
     render() {
-        return <Users totalUsersCount={this.props.totalUsersCount}
-                      pageSize={this.props.pageSize}
-                      currentPage={this.props.currentPage}
-                      onPageChanged={this.onPageChanged}
-                      users={this.props.users}
-                      follow={this.props.follow}
-                      unfollow={this.props.unfollow}/>
+        return <>
+            {this.props.isFetching ? <Preloader/> : null}
+            <Users totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}/>
+        </>
     }
 }
 
@@ -67,6 +73,7 @@ let mapStateToProps = (state: RootStateType): mapStateToPropsPropsType => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         setTotalUsersCount: state.usersPage.totalUsersCount,
+        isFetching: state.usersPage.isFetching
     }
 }
 

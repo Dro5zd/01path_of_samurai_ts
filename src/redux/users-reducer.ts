@@ -3,6 +3,7 @@ export type UsersReducerType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 export type ContactsType = {
@@ -32,7 +33,8 @@ const initialState: UsersReducerType = {
     users: [],
     pageSize: 10,
     totalUsersCount: 21,
-    currentPage: 2
+    currentPage: 2,
+    isFetching: true
 }
 
 const usersReducer = (state = initialState, action: ActionsTypes): UsersReducerType => {
