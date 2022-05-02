@@ -1,7 +1,7 @@
 .side {
     display: flex;
     flex-direction: column;
-
+    min-height: 100vh;
     padding: 10px 2px;
     grid-area: sidebar;
     background-color: white;
@@ -24,14 +24,14 @@
     color: gray;
 }
 
-.contactName{
+.contactName {
     display: block;
     margin-left: 5px;
     font-weight: bold;
     font-size: 15px;
 }
 
-.contactItem{
+.contactItem {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
