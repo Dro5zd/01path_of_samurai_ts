@@ -12,9 +12,11 @@ export const usersAPI = {
         return instance.get('auth/me')
     },
     getUsers(currentPage: number, pageSize: number){
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
-            ).then(response => {
-                return response.data
-        })
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`
+            ).then(response => {return response.data})
+    },
+    getProfile(userId: string){
+        return instance.get(`profile/` + userId)
+            .then(response => {return response.data})
     }
 }

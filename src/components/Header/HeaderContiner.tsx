@@ -28,7 +28,6 @@ type mapStateToPropsPropsType = {
 }
 type mapDispatchToPropsPropsType = {
     setUserData: (id: number, email: string, login: string) => void
-
 }
 
 export type AuthPropsType = mapStateToPropsPropsType & mapDispatchToPropsPropsType
