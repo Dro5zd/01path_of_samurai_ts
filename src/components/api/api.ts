@@ -6,7 +6,6 @@ export const instance = axios.create({
     headers: {'API-KEY': '398fd428-4e41-4ce9-836c-118b8fdb8983'}
 })
 
-
 export const usersAPI = {
     getAuth() {
         return instance.get('auth/me')
