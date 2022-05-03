@@ -47,11 +47,6 @@ let Users = (props: UsersType1) => {
                         <div className={s.usersItemName}>
                             {u.name}
                         </div>
-                        {/*<div className={s.usersItemName}>*/}
-                        {/*    {u.contacts.github}*/}
-                        {/*    {u.contacts.facebook}*/}
-
-                        {/*</div>*/}
                         <div>
                             {u.followed ? <button onClick={() => {
                                 props.unfollow(u.id)

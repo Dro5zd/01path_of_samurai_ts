@@ -12,7 +12,6 @@ export type PostMessageType = {
     likeCount: number
 }
 
-
 export type ContactsType = {
     github: string
     facebook: string

@@ -24,6 +24,11 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                 {/*<img src='https://i.imgur.com/68RKwAl.png' alt={'ava'}/>*/}
                 {/*<h2 className={s.profileName}>Homer Simpson</h2>*/}
                 <h2 className={s.profileName}>{props.profile.fullName}</h2>
+                {/*<div className={s.usersItemName}>*/}
+                {/*    {props.profile.contacts.github}*/}
+                {/*    {props.profile.contacts.facebook}*/}
+
+                {/*</div>*/}
             </div>
 
         </div>
