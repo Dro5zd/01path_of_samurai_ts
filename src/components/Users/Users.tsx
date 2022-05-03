@@ -3,6 +3,7 @@ import s from './Users.module.css'
 import noPhoto from '../../assets/img/noPhoto.png'
 import {UsersType} from '../../redux/users-reducer';
 import {NavLink} from 'react-router-dom';
+import axios from 'axios';
 
 
 type UsersType1 = {
@@ -36,7 +37,6 @@ let Users = (props: UsersType1) => {
                 })}
             </div>
             {props.users.map(u => {
-                debugger
                 return (
                     <div className={s.usersItem} key={u.id}>
                         <div>
@@ -49,9 +49,21 @@ let Users = (props: UsersType1) => {
                         </div>
                         <div>
                             {u.followed ? <button onClick={() => {
+
                                 props.unfollow(u.id)
+
+
                             }}>Follow</button> : <button onClick={() => {
+
+                                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+                                    .then(response => {
+                                        this.props.toggleIsFetching(false)
+                                        this.props.setUsers(response.data.items)
+                                        this.props.setTotalUsersCount(response.data.totalCount = 300)
+                                    })
                                 props.follow(u.id)
+
+
                             }}>Unfollow</button>}
                         </div>
                     </div>

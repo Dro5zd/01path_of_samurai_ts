@@ -11,3 +11,8 @@
     grid-area: header;
     /*background-color: orange;*/
 }
+
+.loginBlock {
+    float: right;
+    color: #e30d0d;
+}

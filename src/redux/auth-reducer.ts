@@ -1,33 +1,38 @@
 export type authReducerType = {
-    currentPage: number
-    isFetching: boolean
+    id: number | null,
+    email: string | null,
+    login: string | null,
+    isAuth: boolean
 }
 
 export type ActionsTypes =
-    ReturnType<typeof follow>
-    | ReturnType<typeof unfollow>
+    ReturnType<typeof setUserData>
+
 
 const initialState: authReducerType = {
-    currentPage: 1,
-    isFetching: false
+    id: null,
+    email: null,
+    login: null,
+    isAuth: false
 }
 
 const authReducer = (state = initialState, action: ActionsTypes): authReducerType => {
     switch (action.type) {
-        case 'FOLLOW':
+        case 'SET-USER-DATA':
             return {
                 ...state,
-
+                ...action.data,
+                isAuth: true
             }
         default:
             return state;
     }
 }
 
-export const follow = (userId: number) => {
+export const setUserData = (id: number, email: string, login: string) => {
     return {
-        type: 'FOLLOW' as const,
-        userId
+        type: 'SET-USER-DATA' as const,
+        data: {id, email, login}
     } as const
 }
 
