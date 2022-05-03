@@ -37,37 +37,38 @@ let Users = (props: UsersType1) => {
                 })}
             </div>
             {props.users.map(u => {
-                return (
-                    <div className={s.usersItem} key={u.id}>
-                        <div>
-                            <NavLink to={'/profile/' + u.id}>
-                                <img src={u.photos.small || noPhoto} alt=""/>
-                            </NavLink>
+                    return (
+                        <div className={s.usersItem} key={u.id}>
+                            <div>
+                                <NavLink to={'/profile/' + u.id}>
+                                    <img src={u.photos.small || noPhoto} alt=""/>
+                                </NavLink>
+                            </div>
+                            <div className={s.usersItemName}>
+                                {u.name}
+                            </div>
+                            <div>
+                                {u.followed ? <button onClick={() => {
+
+                                    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id})`, {withCredentials: true})
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.unfollow(u.id)
+                                            }
+                                        })
+
+                                }}>Follow</button> : <button onClick={() => {
+
+                                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id})`, {}, {withCredentials: true})
+                                        .then(response => {
+                                            if (response.data.resultCode === 0) {
+                                                props.follow(u.id)
+                                            }
+                                        })
+                                }}>Unfollow</button>}
+                            </div>
                         </div>
-                        <div className={s.usersItemName}>
-                            {u.name}
-                        </div>
-                        <div>
-                            {u.followed ? <button onClick={() => {
-
-                                props.unfollow(u.id)
-
-
-                            }}>Follow</button> : <button onClick={() => {
-
-                                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-                                    .then(response => {
-                                        this.props.toggleIsFetching(false)
-                                        this.props.setUsers(response.data.items)
-                                        this.props.setTotalUsersCount(response.data.totalCount = 300)
-                                    })
-                                props.follow(u.id)
-
-
-                            }}>Unfollow</button>}
-                        </div>
-                    </div>
-                )
+                    )
                 }
             )}
         </div>)
