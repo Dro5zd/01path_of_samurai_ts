@@ -17,5 +17,23 @@ export const usersAPI = {
     getProfile(userId: string){
         return instance.get(`profile/` + userId)
             .then(response => {return response.data})
+    },
+    unfollow (userId: number){
+        return instance.delete(`${userId}`)
+            // .then(response => {
+            // if (response.data.resultCode === 0) {
+            //     props.unfollow(u.id)
+            // }
+            // props.toggleFollowingProgress(false, u.id)
+        // })
+    },
+    follow (userId: number){
+        return instance.post(`${userId}`)
+            // .then(response => {
+            //     if (response.data.resultCode === 0) {
+            //         props.follow(u.id)
+            //     }
+            //     props.toggleFollowingProgress(false, u.id)
+            // })
     }
 }
