@@ -1,5 +1,8 @@
-import {PhotosType, setTotalUsersCount, setUsers, toggleIsFetching} from './users-reducer';
+import {
+    PhotosType
+} from './users-reducer';
 import {usersAPI} from '../components/api/api';
+import {Dispatch} from '@reduxjs/toolkit';
 
 export type ProfileReducerType = {
     postMessage: Array<PostMessageType>
@@ -103,6 +106,13 @@ export const setUserProfile = (profile: ProfileUsersType) => {
     } as const
 }
 
-
+export const getProfile = (userId: string) => {
+    return (dispatch: Dispatch) => {
+        usersAPI.getProfile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data))
+            })
+    }
+}
 
 export default profileReducer

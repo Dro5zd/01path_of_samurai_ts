@@ -1,4 +1,5 @@
 import {usersAPI} from '../components/api/api';
+import {Dispatch} from '@reduxjs/toolkit';
 
 export type UsersReducerType = {
     users: UserType[]
@@ -153,7 +154,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
 }
 
 export const follow = (usersId: number) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
 
         dispatch(toggleFollowingProgress(true, usersId))
 
@@ -168,7 +169,7 @@ export const follow = (usersId: number) => {
 }
 
 export const unfollow = (usersId: number) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
 
         dispatch(toggleFollowingProgress(true, usersId))
 

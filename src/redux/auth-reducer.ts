@@ -1,5 +1,5 @@
-import {setTotalUsersCount, setUsers, toggleIsFetching} from './users-reducer';
 import {usersAPI} from '../components/api/api';
+import {Dispatch} from '@reduxjs/toolkit';
 
 export type authReducerType = {
     id: number | null,
@@ -40,11 +40,11 @@ export const setUserData = (id: number, email: string, login: string) => {
 }
 
 export const getAuth = () => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch) => {
         usersAPI.getAuth()
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    let {id, email, login} = response.data.data
+            .then(data => {
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data
                     dispatch(setUserData(id, email, login))
                 }
             })
