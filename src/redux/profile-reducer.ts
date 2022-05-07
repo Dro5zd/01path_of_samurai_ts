@@ -1,4 +1,5 @@
-import {PhotosType} from './users-reducer';
+import {PhotosType, setTotalUsersCount, setUsers, toggleIsFetching} from './users-reducer';
+import {usersAPI} from '../components/api/api';
 
 export type ProfileReducerType = {
     postMessage: Array<PostMessageType>
@@ -101,5 +102,7 @@ export const setUserProfile = (profile: ProfileUsersType) => {
         profile
     } as const
 }
+
+
 
 export default profileReducer

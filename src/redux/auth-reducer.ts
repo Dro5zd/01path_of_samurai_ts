@@ -1,3 +1,6 @@
+import {setTotalUsersCount, setUsers, toggleIsFetching} from './users-reducer';
+import {usersAPI} from '../components/api/api';
+
 export type authReducerType = {
     id: number | null,
     email: string | null,
@@ -36,5 +39,16 @@ export const setUserData = (id: number, email: string, login: string) => {
     } as const
 }
 
+export const getAuth = () => {
+    return (dispatch: any) => {
+        usersAPI.getAuth()
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    let {id, email, login} = response.data.data
+                    dispatch(setUserData(id, email, login))
+                }
+            })
+    }
+}
 
 export default authReducer
