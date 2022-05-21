@@ -22,15 +22,10 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                 alt={'Mountain'}/></div>
             <div className={s.avatar}>
                 <img src={props.profile.photos.small || noPhoto} alt={'ava'}/>
-                {/*<img src='https://i.imgur.com/68RKwAl.png' alt={'ava'}/>*/}
-                {/*<h2 className={s.profileName}>Homer Simpson</h2>*/}
-                <h2 className={s.profileName}>{props.profile.fullName}</h2>
-                {/*<div className={s.usersItemName}>*/}
-                {/*    {props.profile.contacts.github}*/}
-                {/*    {props.profile.contacts.facebook}*/}
 
-                {/*</div>*/}
-                <ProfileStatus/>
+                <h2 className={s.profileName}>{props.profile.fullName}</h2>
+
+                <ProfileStatus status={'Hi! How are you?'}/>
             </div>
 
         </div>

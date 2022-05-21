@@ -13,7 +13,8 @@
 
 .avatar {
     position: relative;
-    margin-top: -150px
+    margin-top: -150px;
+    justify-content: center;
 }
 
 .avatar img {
@@ -23,7 +24,6 @@
     width: 168px;
     border-radius: 50%;
     border: 5px solid white;
-
 }
 
 .profileName {
