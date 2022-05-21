@@ -2,7 +2,7 @@ import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css'
 import Messages from './Messages/Messages'
-import {Button, TextField} from '@mui/material';
+import {TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import {DialogsPropsType} from './DialogsContainer';
 import {Redirect} from 'react-router-dom';
@@ -14,7 +14,8 @@ const Dialogs = (props: DialogsPropsType) => {
     let dialogsElement = family.map(d => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar}/>)
 
     let messagesItem = props.messageItem.messageItem.map(d => <Messages key={d.id} message={d.message}
-                                                                        id={d.id} name={d.name} avatar={d.avatar} time={d.time}/>)
+                                                                        id={d.id} name={d.name} avatar={d.avatar}
+                                                                        time={d.time}/>)
 
     if (!props.isAuth) return <Redirect to={'/login'}/>
 

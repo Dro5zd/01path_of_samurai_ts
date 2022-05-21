@@ -3,6 +3,7 @@ import React from "react";
 import {Preloader} from '../../common/Preloader';
 import {ProfileUsersType} from '../../../redux/profile-reducer';
 import noPhoto from '../../../assets/img/noPhoto.png';
+import {ProfileStatus} from './ProfileStatus';
 
 
 type ProfileInfoPropsType = {
@@ -29,6 +30,7 @@ export const ProfileInfo = (props: ProfileInfoPropsType) => {
                 {/*    {props.profile.contacts.facebook}*/}
 
                 {/*</div>*/}
+                <ProfileStatus/>
             </div>
 
         </div>
