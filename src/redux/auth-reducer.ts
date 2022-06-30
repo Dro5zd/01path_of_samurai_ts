@@ -1,4 +1,4 @@
-import {usersAPI} from '../components/api/api';
+import {authAPI, usersAPI} from '../components/api/api';
 import {Dispatch} from '@reduxjs/toolkit';
 
 export type authReducerType = {
@@ -41,7 +41,7 @@ export const setUserData = (id: number, email: string, login: string) => {
 
 export const getAuth = () => {
     return (dispatch: Dispatch) => {
-        usersAPI.getAuth()
+        authAPI.getAuth()
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data
