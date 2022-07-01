@@ -1,13 +1,9 @@
 import React from 'react';
-import {FormikErrors, FormikProps, useFormik} from 'formik';
+import {FormikErrors, useFormik} from 'formik';
 
 interface FormValues {
     email: string;
     password: string;
-}
-
-interface OtherProps {
-    message: string;
 }
 
 const validate = (values: FormValues) => {
@@ -28,8 +24,7 @@ const validate = (values: FormValues) => {
 };
 
 
-const LoginForm = (props: OtherProps & FormikProps<FormValues>) => {
-    const { touched, errors} = props;
+const LoginForm = () => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -37,7 +32,7 @@ const LoginForm = (props: OtherProps & FormikProps<FormValues>) => {
         },
         validate,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(values));
         },
     });
 
@@ -45,22 +40,19 @@ const LoginForm = (props: OtherProps & FormikProps<FormValues>) => {
         <form onSubmit={formik.handleSubmit}>
             <input
                 id="email"
-                name="email"
                 type="email"
                 placeholder={'Email Address'}
-                onChange={formik.handleChange}
-                value={formik.values.email}
+                {...formik.getFieldProps('email')}
             />
-            {touched.email && errors.email && <div>{errors.email}</div>}
+            {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
             <input
                 id="password"
-                name="password"
                 type="password"
                 placeholder={'Password'}
-                onChange={formik.handleChange}
-                value={formik.values.email}
+                {...formik.getFieldProps('password')}
             />
-            {touched.password && errors.password && <div>{errors.password}</div>}
+            {formik.touched.password && formik.errors.password && <div>{formik.errors.password}</div>}
+
 
             <button type="submit">Login</button>
         </form>
