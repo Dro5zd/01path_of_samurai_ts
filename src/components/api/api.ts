@@ -28,6 +28,13 @@ export const authAPI = {
             .then(response => {
                 return response.data
             })
+    },
+    login(data: DataRequestType) {
+        return instance.post<DataResponseType<{userId: number}>>('auth/login', data)
+    },
+
+    logOut() {
+        return instance.delete<DataResponseType>('auth/login')
     }
 }
 
@@ -47,4 +54,18 @@ export const profileAPI = {
     updateUserStatus(status: string) {
         return instance.put(`profile/status`, {status: status})
     }
+}
+
+export type DataRequestType = {
+    email: string
+    password: string
+    rememberMe?: boolean
+    captcha?: string
+}
+
+export type DataResponseType<D = {}> = {
+    resultCode: number
+    messages: Array<string>
+    data: D
+    fieldsErrors: Array<string>
 }

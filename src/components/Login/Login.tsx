@@ -1,5 +1,7 @@
 import React from 'react';
 import {FormikErrors, useFormik} from 'formik';
+import {loginTC} from '../../redux/auth-reducer';
+import {connect} from 'react-redux';
 
 interface FormValues {
     email: string;
@@ -24,7 +26,9 @@ const validate = (values: FormValues) => {
 };
 
 
-const LoginForm = () => {
+const LoginForm = (props: any) => {
+    // const dispatch = useDispatch()
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -32,7 +36,7 @@ const LoginForm = () => {
         },
         validate,
         onSubmit: values => {
-            alert(JSON.stringify(values));
+            props.loginTC(values);
         },
     });
 
@@ -53,19 +57,30 @@ const LoginForm = () => {
             />
             {formik.touched.password && formik.errors.password && <div>{formik.errors.password}</div>}
 
+            <input
+                id="checkbox"
+                type="checkbox"
+                {...formik.getFieldProps('checkbox')}
+            />
+
 
             <button type="submit">Login</button>
+
         </form>
     );
 };
 
-const Login = () => {
+type LoginPropsType = {
+    loginTC: () => void
+}
+
+const Login = (props: any) => {
     return <div>
         <h1>LOGIN</h1>
-        <LoginForm/>
+        <LoginForm loginTC={props.loginTC}/>
     </div>
 }
 
-export default Login
+export default connect(null, {loginTC})(Login)
 
 
