@@ -1,4 +1,4 @@
-import {addPostAC, updateNewPostAC} from './profile-reducer';
+import {addPostAC} from './profile-reducer';
 import {v1} from 'uuid';
 
 
@@ -23,7 +23,6 @@ export type MessageItemType = {
 
 export type ActionsTypes =
     ReturnType<typeof addPostAC>
-    | ReturnType<typeof updateNewPostAC>
     | ReturnType<typeof addMessageAC>
 
 
