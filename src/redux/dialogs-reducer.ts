@@ -5,7 +5,6 @@ import {v1} from 'uuid';
 export type DialogsReducerType = {
     dialogItem: Array<DialogItemType>
     messageItem: Array<MessageItemType>
-    newMessageText: string
 }
 
 export type DialogItemType = {
@@ -26,7 +25,6 @@ export type ActionsTypes =
     ReturnType<typeof addPostAC>
     | ReturnType<typeof updateNewPostAC>
     | ReturnType<typeof addMessageAC>
-    | ReturnType<typeof updateNewMessageAC>
 
 
 const initialState: DialogsReducerType = {
@@ -109,8 +107,7 @@ const initialState: DialogsReducerType = {
             time: '10:15',
             message: 'I\'m fine!!!'
         },
-    ],
-    newMessageText: ''
+    ]
 }
 
 const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsReducerType => {
@@ -122,36 +119,20 @@ const dialogsReducer = (state = initialState, action: ActionsTypes): DialogsRedu
                 avatar: 'https://i.pinimg.com/564x/bd/94/5b/bd945b1a518afce06a405e69123974d9.jpg',
                 name: 'Andrii Veseliy',
                 time: currentTime,
-                message: state.newMessageText
+                message: action.newMessageBody
             };
             return {
                 ...state,
-                newMessageText: '',
                 messageItem: [...state.messageItem, newMessage]
             }
         }
-
-        case 'UPDATE-NEW-MESSAGE': {
-            return {
-                ...state,
-                newMessageText: action.newMessage
-            }
-        }
-
     }
     return state
 }
 
-export const addMessageAC = () => {
+export const addMessageAC = (newMessageBody: string) => {
     return {
-        type: 'ADD-MESSAGE',
-    } as const
-}
-
-export const updateNewMessageAC = (newMessage: string) => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE',
-        newMessage: newMessage
+        type: 'ADD-MESSAGE', newMessageBody
     } as const
 }
 

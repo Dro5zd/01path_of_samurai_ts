@@ -6,6 +6,7 @@ import {TextField} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import {DialogsPropsType} from './DialogsContainer';
 import {Redirect} from 'react-router-dom';
+import {useFormik} from 'formik';
 
 
 const Dialogs = (props: DialogsPropsType) => {
@@ -29,15 +30,35 @@ const Dialogs = (props: DialogsPropsType) => {
                     {messagesItem}
                 </div>
             </div>
-            <div>
-                <TextField id="outlined-basic"
-                           variant="outlined"
-                           value={props.newMessageText}
-                           onChange={props.onPostChange}/>
-                <SendIcon onClick={props.onClickAddPostButtonHandler}/>
-            </div>
+            <AddMessageForm onClickAddPostButtonHandler={props.onClickAddPostButtonHandler}/>
         </div>
     );
 }
+
+type AddMessageFormPropsType = {
+    onClickAddPostButtonHandler: (values: string) => void
+}
+
+const AddMessageForm = (props: AddMessageFormPropsType) => {
+
+    const formik = useFormik({
+        initialValues: {
+            message: '',
+        },
+        onSubmit: values => {
+            props.onClickAddPostButtonHandler(values.message);
+        },
+    });
+
+    return (
+        <form>
+            <TextField id="outlined-basic"
+                       type={'text'}
+                       variant="outlined"
+                       {...formik.getFieldProps('message')}/>
+            <SendIcon type='submit' onClick={formik.handleSubmit}/>
+        </form>
+    );
+};
 
 export default Dialogs

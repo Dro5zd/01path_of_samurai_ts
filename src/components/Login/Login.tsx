@@ -2,17 +2,20 @@ import React from 'react';
 import {FormikErrors, useFormik} from 'formik';
 import {loginTC} from '../../redux/auth-reducer';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import {RootStateType} from '../../redux/store-redux';
 
 interface FormValues {
     email: string;
     password: string;
+    rememberMe: boolean
 }
 
 const validate = (values: FormValues) => {
     let errors: FormikErrors<FormValues> = {};
     if (!values.email) {
         errors.email = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    } else if (!/^[A-Z\d._%+-]+@[A-Z\d.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
         errors.email = 'Invalid email address';
     }
 
@@ -25,14 +28,18 @@ const validate = (values: FormValues) => {
     return errors;
 };
 
+type LoginFormPropsType = {
+    loginTC: (values: FormValues) => void
+}
 
-const LoginForm = (props: any) => {
-    // const dispatch = useDispatch()
+
+const LoginForm = (props: LoginFormPropsType) => {
 
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
+            rememberMe: false
         },
         validate,
         onSubmit: values => {
@@ -60,9 +67,8 @@ const LoginForm = (props: any) => {
             <input
                 id="checkbox"
                 type="checkbox"
-                {...formik.getFieldProps('checkbox')}
+                {...formik.getFieldProps('rememberMe')}
             />
-
 
             <button type="submit">Login</button>
 
@@ -71,16 +77,28 @@ const LoginForm = (props: any) => {
 };
 
 type LoginPropsType = {
-    loginTC: () => void
+    loginTC: (values: FormValues) => void
+    isAuth: boolean
 }
 
-const Login = (props: any) => {
+type mapStateToPropsPropsType = {
+    isAuth: boolean
+}
+
+const Login = (props: LoginPropsType) => {
+    if (props.isAuth) {
+        return <Redirect to={'/profile'}/>
+    }
     return <div>
         <h1>LOGIN</h1>
         <LoginForm loginTC={props.loginTC}/>
     </div>
 }
 
-export default connect(null, {loginTC})(Login)
+const mapStateToProps = (state: RootStateType): mapStateToPropsPropsType => ({
+    isAuth: state.auth.isAuth
+})
+
+export default connect(mapStateToProps, {loginTC})(Login)
 
 
