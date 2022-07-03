@@ -1,7 +1,7 @@
-import {authAPI, DataRequestType, DataResponseType, usersAPI} from '../components/api/api';
+import {authAPI, DataRequestType} from '../components/api/api';
 import {Dispatch} from '@reduxjs/toolkit';
-import {TypedDispatch, useTypedDispatch} from './store-redux';
-import {ThunkDispatch} from 'redux-thunk';
+import {TypedDispatch} from './store-redux';
+
 
 export type authReducerType = {
     id: number | null,
@@ -53,7 +53,7 @@ export const getAuth = () => {
             })
     }
 }
-export const loginTC = (data: DataRequestType) => {
+export const login = (data: DataRequestType) => {
     return (dispatch: TypedDispatch) => {
         authAPI.login(data)
             .then(data => {
@@ -64,7 +64,7 @@ export const loginTC = (data: DataRequestType) => {
     }
 }
 
-export const logOutTC = () => {
+export const logOut = () => {
     return (dispatch: Dispatch) => {
         authAPI.logOut()
             .then(data => {

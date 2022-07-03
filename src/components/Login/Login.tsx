@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormikErrors, useFormik} from 'formik';
-import {loginTC} from '../../redux/auth-reducer';
+import {login} from '../../redux/auth-reducer';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {RootStateType} from '../../redux/store-redux';
@@ -29,7 +29,7 @@ const validate = (values: FormValues) => {
 };
 
 type LoginFormPropsType = {
-    loginTC: (values: FormValues) => void
+    login: (values: FormValues) => void
 }
 
 
@@ -43,7 +43,7 @@ const LoginForm = (props: LoginFormPropsType) => {
         },
         validate,
         onSubmit: values => {
-            props.loginTC(values);
+            props.login(values);
         },
     });
 
@@ -77,7 +77,7 @@ const LoginForm = (props: LoginFormPropsType) => {
 };
 
 type LoginPropsType = {
-    loginTC: (values: FormValues) => void
+    login: (values: FormValues) => void
     isAuth: boolean
 }
 
@@ -91,7 +91,7 @@ const Login = (props: LoginPropsType) => {
     }
     return <div>
         <h1>LOGIN</h1>
-        <LoginForm loginTC={props.loginTC}/>
+        <LoginForm login={props.login}/>
     </div>
 }
 
@@ -99,6 +99,6 @@ const mapStateToProps = (state: RootStateType): mapStateToPropsPropsType => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {loginTC})(Login)
+export default connect(mapStateToProps, {login})(Login)
 
 
